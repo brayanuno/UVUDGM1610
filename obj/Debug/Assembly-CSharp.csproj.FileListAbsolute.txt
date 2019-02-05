@@ -1,0 +1,2 @@
+C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
