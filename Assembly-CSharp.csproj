@@ -70,7 +70,6 @@
     <Compile Include="Assets\Scripts\Game\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Game\MenuPrincipal.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
-    <None Include="Assets\Tiny Fantasy Icons\README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

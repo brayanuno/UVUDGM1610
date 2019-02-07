@@ -2,83 +2,128 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class HeroeList : MonoBehaviour
 {
-    //a prefab image
     public GameObject buttonPrefab;
-
     [SerializeField]
     private ConfirmationBuyHeroSlot ConfirmationBuyHeroSlot;
     [SerializeField]
-    private HeroManual heroManual;
+    private GameObject heroLobby;
+    [SerializeField]
+    private HeroLobby heroLobbyInstance;
+
+    public HeroeList heroeList;
+    public HeroManual heroManualInstance;
+
+    private List<GameObject> heroeLists = new List<GameObject>();
 
     public Text heroSlots;
     //inventory heroes Amount
     public int heroesMaxSlot;
-    private int heroesOwn;
-    private int initialNewSlot = 10;
-    private bool newHero;
-    private int id = 1;
+    
+    public int heroesOwn;
+    private int initialNewSlot;
+
+    //new heroes information
+    private int id;
+    private string name;
+    private int stars;
+    private int health;
+    private int attack;
+    private int armor;
+    private int speed;
+
+    private string primarySkill;
+    private string passiveSkill;
+    private string secondaryPassiveSkill;
+    private string lastPassiveSkill;
+    private string role;
+
+
+    private 
+   
+    //creating new heroes and storing information
+
      void Start()
+
     {
+        initialNewSlot = 10;
         heroesOwn = 0;
         heroesMaxSlot = 0;
         //starting with the heroesMaxSlot of 10 
         CreatingNewSlots(initialNewSlot);
-        //starting with 10 heroes Slots in the game
-        
+        heroSlots.text = heroesOwn.ToString() + " / " + heroesMaxSlot.ToString();
+
     }
-    
+
+    //new Hero button
     public void NewHero()
     {
-       if(heroesOwn <= heroesMaxSlot)
-       {
+        
+        if (heroesOwn < heroesMaxSlot)
+        {         
+            //getting the information of the hero
+            //int idNumber = Random.Range(1, 10);
+            //print(idNumber);
+            //heroManualInstance.herobyId(idNumber);
+            //string name = heroManualInstance.heroManual.name;
+            //print(name);
+            int idNumber = Random.Range(1, 10);
+            heroManualInstance.herobyId(idNumber);
 
-            heroesOwn += 1;
-            heroSlots.text = heroesOwn.ToString() + " / " + heroesMaxSlot.ToString();
+            GameObject newPrefabSlot = Instantiate(buttonPrefab, transform);
             
-            HeroManual hero1 = new HeroManual("brayan", 3, 10000, 300, 400, 300, "assasin", "the enemyAttacks two Random Enemies by 230%", "increase hp by 10% and attack by 20%", "basic attack deals 145%", "every enemy died gain 20% hp");
+            heroLobbyInstance.heroInfo(heroManualInstance.heroManual.id, heroManualInstance.heroManual.name, heroManualInstance.heroManual.stars, heroManualInstance.heroManual.health,
+                        heroManualInstance.heroManual.attack, heroManualInstance.heroManual.armor, heroManualInstance.heroManual.speed, heroManualInstance.heroManual.role, heroManualInstance.heroManual.primarySkill,
+                         heroManualInstance.heroManual.passiveSkill, heroManualInstance.heroManual.secondaryPassiveSkill, heroManualInstance.heroManual.lastPassiveSkill);
+
+            newPrefabSlot.name = heroManualInstance.heroManual.name;
+            Button buttonCtrl = newPrefabSlot.GetComponent<Button>();
+
+            Text ButtonText = buttonCtrl.GetComponentInChildren<Text>();
+            ButtonText.text = heroManualInstance.heroManual.attack.ToString();
+
+            buttonCtrl.onClick.AddListener(() => PrefabWasClicked());
+            heroeLists.Add(newPrefabSlot);
+
+            print(heroeLists[0]);
+            print(heroeLists.Count);
+            //print(firstItem);      
+            heroesOwn++;
+            heroSlots.text = heroesOwn.ToString() + " / " + heroesMaxSlot.ToString();
         }
-    }
-    //placing new hero
-    public void GotNewHero(int id)
-    {
-        if (heroesOwn <= heroesMaxSlot)
+        else
         {
-            buttonPrefab.GetComponentInChildren<Text>().text = "this is the new hero with id 1 ";
-            //creating a new hero with the id 1
-            heroManual.HeroesStats(id);
-            heroesOwn += 1;
-            buttonPrefab.GetComponentInChildren<Text>().text = "Some string";
-            
-            heroSlots.text = heroesOwn.ToString() + " / " + heroesMaxSlot.ToString();
+            //no enough space in the slots
+            print("no enough space");
+
         }
-    }
-
-    private void DisplayingHeroLobby ()
-    {
 
     }
-    
-    
-    //creating new prefabs 
+
+    //everything the prefab was clicked 
+    public void PrefabWasClicked() {
+       
+        heroLobby.SetActive(true);
+    }
+
+    //creating new slots but not visible
 
     public void CreatingNewSlots(int slot)
     {
-        GameObject newPrefabSlot;
-
+        
         for (int i = 0; i < slot; i++)
         {
             heroesMaxSlot++;
-            newPrefabSlot = (GameObject)Instantiate(buttonPrefab, transform);
-
-  
-            newPrefabSlot.GetComponent<Image>().color = Random.ColorHSV();
+            //newPrefabSlot = (GameObject)Instantiate(buttonPrefab, transform);
+            //newPrefabSlot.GetComponent<Image>().color = Random.ColorHSV();
             heroSlots.text = heroesOwn.ToString() + " / " + heroesMaxSlot.ToString();
 
         }
     }
-    //getting the heroess by id
+
+    
     
 }
