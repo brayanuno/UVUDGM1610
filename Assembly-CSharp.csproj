@@ -60,6 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Gordo\Demo\Prefabs\DAChkBox\Scripts\DAChkBox.cs" />
+    <Compile Include="Assets\Gordo\Demo\Scripts\GordoDemo.cs" />
+    <Compile Include="Assets\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />
+    <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
+    <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
+    <Compile Include="Assets\ScriptHeadball\GamePlay.cs" />
+    <Compile Include="Assets\ScriptHeadball\HeadCollider.cs" />
+    <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\Scripts\FirstScript.cs" />
     <Compile Include="Assets\Scripts\Functions.cs" />
     <Compile Include="Assets\Scripts\Game\Heroes\ConfirmationBuyHeroSlot.cs" />

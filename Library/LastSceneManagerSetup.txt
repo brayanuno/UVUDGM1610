@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/RPGHEROESMENU.unity
+- path: Assets/Scenes/HeadBall.unity
   isLoaded: 1
   isActive: 1
