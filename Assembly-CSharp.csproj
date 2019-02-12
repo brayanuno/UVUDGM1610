@@ -60,14 +60,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Gordo\Demo\Prefabs\DAChkBox\Scripts\DAChkBox.cs" />
-    <Compile Include="Assets\Gordo\Demo\Scripts\GordoDemo.cs" />
-    <Compile Include="Assets\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />
-    <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
-    <Compile Include="Assets\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
+    <Compile Include="Assets\ScriptHeadball\ArcS\ArcPlayer.cs" />
+    <Compile Include="Assets\ScriptHeadball\ArcS\ArcSecondaryPlayer.cs" />
+    <Compile Include="Assets\ScriptHeadball\Ball.cs" />
+    <Compile Include="Assets\ScriptHeadball\Events.cs" />
     <Compile Include="Assets\ScriptHeadball\GamePlay.cs" />
-    <Compile Include="Assets\ScriptHeadball\HeadCollider.cs" />
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
+    <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
+    <Compile Include="Assets\Scripts\Animal.cs" />
+    <Compile Include="Assets\Scripts\Cat.cs" />
+    <Compile Include="Assets\Scripts\CoinPicker.cs" />
+    <Compile Include="Assets\Scripts\Feline.cs" />
     <Compile Include="Assets\Scripts\FirstScript.cs" />
     <Compile Include="Assets\Scripts\Functions.cs" />
     <Compile Include="Assets\Scripts\Game\Heroes\ConfirmationBuyHeroSlot.cs" />
@@ -77,6 +80,8 @@
     <Compile Include="Assets\Scripts\Game\Heroes\HeroManual.cs" />
     <Compile Include="Assets\Scripts\Game\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Game\MenuPrincipal.cs" />
+    <Compile Include="Assets\Scripts\GenericPickUp.cs" />
+    <Compile Include="Assets\Scripts\PlayerAnimal.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
