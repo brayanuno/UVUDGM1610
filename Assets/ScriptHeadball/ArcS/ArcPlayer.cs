@@ -12,6 +12,7 @@ public class ArcPlayer : MonoBehaviour
         if(other.gameObject.name == "Ball")
         {
             gameplay.scorePlayer++;
+            gameplay.ScoreGoal();
         }
     }
 }

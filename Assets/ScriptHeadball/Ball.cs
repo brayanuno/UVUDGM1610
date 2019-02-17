@@ -47,6 +47,7 @@ public class Ball : MonoBehaviour
 
         }
     }
+    //
     public void InvokingForce()
     {
         ball.GetComponent<Rigidbody>().AddForce(transform.right * headForce);

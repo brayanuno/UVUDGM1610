@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Functions : MonoBehaviour
+public class Functions : PlayerAnimal
 {
-    public Functions coin;
-    private int coinScore;
+    public int coinScore;
     public Text scoreText;
 
      void Start()
@@ -16,18 +15,12 @@ public class Functions : MonoBehaviour
 
     }
 
-
-    void OnMouseOver()
-    {
-        collectCoin();
-    }
-
-    void collectCoin()
+    public void CollectCoin()
     {   
         coinScore += 20;
         scoreText.text = "Score: " + coinScore.ToString();
-        print(coinScore);
-    }
 
+    }
+   
 
 }

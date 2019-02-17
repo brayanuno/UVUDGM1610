@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/HeadBall.unity
+- path: Assets/Scenes/Assigment.unity
   isLoaded: 1
   isActive: 1

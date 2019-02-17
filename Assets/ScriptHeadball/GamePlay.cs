@@ -21,7 +21,7 @@ public class GamePlay: MonoBehaviour
     //timer
     private float targetTime = 60.0f;
     public Text time;
-    private bool endGame;
+    private bool onetime;
 
     public GameObject victory;
     public Text victoryText;
@@ -35,12 +35,13 @@ public class GamePlay: MonoBehaviour
     {
         scorePlayer = 0;
         scoreSecondaryPlayer = 0;
-        endGame = false;
+        onetime = false;
         PositionInitGame();
 
         victory.SetActive(false);
         draw.SetActive(false);
 
+       
     }
     //updating Score
     void Update()
@@ -53,12 +54,7 @@ public class GamePlay: MonoBehaviour
         targetTime -= Time.deltaTime;
         time.text = (targetTime).ToString("0");
 
-        //when any player Score a goal
-        if(scorePlayer == 1 || scoreSecondaryPlayer == 1)
-        {
-            Invoke("ScoreGoal", 1);
-        }
-
+        
 
 
         //game is over
@@ -84,15 +80,17 @@ public class GamePlay: MonoBehaviour
 
     }
     //when anyone score a goal
-    private void ScoreGoal()
+    public void ScoreGoal()
     {
-        
+        ball.transform.position = originalBall;
         player.transform.position = originalPosPlayer;
         secondaryPlayer.transform.position = originalsecondaryPlayer;
     }
 
+    //end game
     private void EndfGame()
     {
+        ball.transform.position = originalBall;
         player.transform.position = originalPosPlayer;
         secondaryPlayer.transform.position = originalsecondaryPlayer;
     }

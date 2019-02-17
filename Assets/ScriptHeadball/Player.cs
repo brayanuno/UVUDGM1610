@@ -9,14 +9,14 @@ public class Player : MonoBehaviour
     private GameObject player;
     public float playerSpeed;
 
+    [SerializeField]
+    private Powers power;
+
     private Rigidbody rb;
     private int jumpCount;
     //public Vector2 jumpHeight;
 
-    private int powercount;
     private string[] powers;
-
-    public GameObject image;
     private int powerAvailable;
 
     // Start is called before the first frame update
@@ -26,9 +26,12 @@ public class Player : MonoBehaviour
         playerSpeed = 4f;
         //limit the jump to two
         jumpCount = 0;
-        //setting the powers
-        settingPowers();
-      
+        powers = new string[3];
+        powers[0] = "freeze";
+        powers[1] = "timer";
+        powers[2] = "invisible";
+        powerAvailable = 3;
+
 
     }
     // Update is called once per frame
@@ -50,25 +53,31 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector3(0f, 5f, 0f);
             jumpCount++;
         }
+
+        //input the first power
         if (Input.GetKeyDown(KeyCode.B))
         {
+            power.ReleasePower(powers[0]);
             powerAvailable--;
-            powers[0] = "none";
+           
         }
+        //input the second power
         if (Input.GetKeyDown(KeyCode.N))
         {
+            power.ReleasePower(powers[1]);
             powerAvailable--;
-            powers[1] = "none";
+    
         }
-
+        //input the third power
         if (Input.GetKeyDown(KeyCode.M))
         {
+            power.ReleasePower(powers[2]);
             powerAvailable--;
-            powers[2] = "none";
+
         }
 
 
-        //previnting from falling
+        //preventing from falling
         Vector3 rotationVector = transform.rotation.eulerAngles;
         rotationVector.x = 0;
         rotationVector.z = 0;
@@ -76,6 +85,8 @@ public class Player : MonoBehaviour
 
 
     }
+   
+
     //when colliding with the floor reset the max jump
     void OnCollisionEnter(Collision col)
     {
@@ -85,15 +96,5 @@ public class Player : MonoBehaviour
             print("colliding working");
         }
     }
-    private void settingPowers()
-    {
-        //powerAvailable = 3;
-        //powers[0] = "freezze";
-        //powers[1] = "2xPoint";
-        //powers[2] = "invisibility";
-    }
-
-
-
-
+   
 }
