@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 12, y: -30.699997}
+  m_AnchoredPosition: {x: 12, y: -30.700012}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209412556
@@ -203,11 +203,11 @@ GameObject:
   - component: {fileID: 474910730}
   - component: {fileID: 474910729}
   - component: {fileID: 474910728}
-  - component: {fileID: 474910731}
   - component: {fileID: 474910732}
   - component: {fileID: 474910727}
   - component: {fileID: 474910726}
   - component: {fileID: 474910733}
+  - component: {fileID: 474910731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -330,12 +330,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 474910725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52490311c372bb446a134145376e9635, type: 3}
+  m_Script: {fileID: 11500000, guid: b4fdf3d8a342aeb43a46d4cd10ae25cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collect: {fileID: 658344703}
   playerSpeed: 4
   jumpHeight: 5
+  coinScore: 0
+  scoreText: {fileID: 209412556}
+  healthbar: {fileID: 2123598024}
+  randomSpawn: {fileID: 1561178618}
+  objectDestroyed: 1
 --- !u!114 &474910732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 474910725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f99b75e05449350409d3004418a7af5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 97bda7b0728815e40a006090f500abec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collect: {fileID: 658344703}
@@ -353,9 +358,6 @@ MonoBehaviour:
   jumpHeight: 5
   coinScore: 0
   scoreText: {fileID: 209412556}
-  healthbar: {fileID: 474910733}
-  randomSpawn: {fileID: 1561178618}
-  objectDestroyed: 0
 --- !u!114 &474910733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,15 +367,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 474910725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04f0a23116a3ca408eaac08cdd8c6b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bdfa2007bdddc84b804bb200d27f7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collect: {fileID: 658344703}
   playerSpeed: 4
   jumpHeight: 5
-  healthBar: {fileID: 777399552}
-  ratioText: {fileID: 798719529}
-  hitpoint: 150
 --- !u!1 &606898648
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,11 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7eef2de2ed88e4aabf1df3a1fde48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collect: {fileID: 0}
-  playerSpeed: 4
-  jumpHeight: 5
-  coinScore: 0
-  scoreText: {fileID: 209412556}
 --- !u!61 &697361135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1126,19 +1120,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561178617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2bfcecd7dce3a64c8ea4f6966aa7ac2, type: 3}
+  m_Script: {fileID: 11500000, guid: b0eb73e1c05254840b844a415d3c2923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collect: {fileID: 0}
   playerSpeed: 4
   jumpHeight: 5
   coinScore: 0
-  scoreText: {fileID: 209412556}
+  scoreText: {fileID: 0}
   healthbar: {fileID: 0}
   randomSpawn: {fileID: 0}
-  objectDestroyed: 0
+  objectDestroyed: 1
   coin: {fileID: 8608393633509683253, guid: ce1447ef5ca54d84b8492e46df7ef74d, type: 3}
-  spawnRate: 5
+  spawnRate: 3
   nextSpawn: 0
   instanstiateCoin: {fileID: 0}
 --- !u!4 &1561178619
@@ -1312,7 +1306,7 @@ GameObject:
   - component: {fileID: 2123598025}
   - component: {fileID: 2123598024}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HealthManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1327,20 +1321,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123598023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef057882101c6ee4b96a035296524a1f, type: 3}
+  m_Script: {fileID: 11500000, guid: a838cbec96dc97a4286fc8ccd6f82e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 120
-  legs: 3
-  domesticated: 1
-  tail: 1
-  pointedEars: 1
-  shortHair: 1
-  declawed: 1
-  size: 13
-  weight: 532
-  funColor: orange
-  age: 12
+  collect: {fileID: 658344703}
+  playerSpeed: 4
+  jumpHeight: 5
+  healthBar: {fileID: 777399552}
+  ratioText: {fileID: 798719529}
+  hitpoint: 150
 --- !u!114 &2123598025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,8 +1342,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3539817278da6f4baa127424dc3219f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  legs: 0
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2123598026
 Transform:
   m_ObjectHideFlags: 0

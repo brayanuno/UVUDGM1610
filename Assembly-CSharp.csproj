@@ -60,6 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CoinPicker.cs" />
+    <Compile Include="Assets\Functions.cs" />
+    <Compile Include="Assets\GenericPickUp.cs" />
+    <Compile Include="Assets\HealthBar.cs" />
+    <Compile Include="Assets\PlayerAnimal.cs" />
+    <Compile Include="Assets\PowersUp.cs" />
+    <Compile Include="Assets\RandomSpawn.cs" />
+    <Compile Include="Assets\Score.cs" />
     <Compile Include="Assets\ScriptHeadball\ArcS\ArcPlayer.cs" />
     <Compile Include="Assets\ScriptHeadball\ArcS\ArcSecondaryPlayer.cs" />
     <Compile Include="Assets\ScriptHeadball\Ball.cs" />
@@ -68,19 +76,7 @@
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\ScriptHeadball\Powers.cs" />
     <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
-    <Compile Include="Assets\Scripts\Animal.cs" />
-    <Compile Include="Assets\Scripts\Cat.cs" />
-    <Compile Include="Assets\Scripts\CoinPicker.cs" />
-    <Compile Include="Assets\Scripts\Feline.cs" />
-    <Compile Include="Assets\Scripts\Functions.cs" />
-    <Compile Include="Assets\Scripts\Game\LevelLoader.cs" />
-    <Compile Include="Assets\Scripts\Game\MenuPrincipal.cs" />
-    <Compile Include="Assets\Scripts\GenericPickUp.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\PlayerAnimal.cs" />
-    <Compile Include="Assets\Scripts\PowersUp.cs" />
-    <Compile Include="Assets\Scripts\RandomSpawn.cs" />
-    <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Switches.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
