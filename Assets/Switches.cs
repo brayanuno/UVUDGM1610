@@ -31,15 +31,33 @@ public class Switches : MonoBehaviour
                 print("wero is suspect");
                 break;
             case "pint":
-                print("wero is suspect");
+                print("pint is suspect");
                 break;
             case "tempo":
-                print("wero is suspect");
+                print("tempo is suspect");
                 break;
-
+            case "jaime":
+                print("jaime is suspect");
+                break;
+            case "ronald":
+                print("ronald is suspect");
+                break;
+            case "brayan":
+                print("brayan is suspect");
+                break;
+            case "snitch":
+                print("snitch is suspect");
+                break;
+            case "javier":
+                print("javier is suspect");
+                break;
+            case "mario":
+            case "juan":
+                print("Mario and Juan is suspect");
+                break;
             default:
                 print("none suspect");
-                break;...........................
+                break;
         }
     }
 }
