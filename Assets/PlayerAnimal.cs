@@ -9,39 +9,65 @@ public class PlayerAnimal : MonoBehaviour
     public int playerSpeed = 4;
     public int jumpHeight = 5;
 
-    void Start()
-    {
+    private bool grounded;
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask WhatIsGround;
 
+    private void Start()
+    {
+        
+    }
+    void FixedUpdate()
+    {
+        grounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,WhatIsGround);
     }
 
     void Update()
     {
-        //losing healht
-        //health -= Time.deltaTime * decreasePerMinute / 60f;
-        //print(health);
-
-        if (Input.GetKey(KeyCode.D))
+        //JUMPING
+        if (Input.GetKeyDown(KeyCode.W) && grounded)
         {
-            transform.Translate(playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run right
+            Jump();
+        }
+        //MOVING LEFT
+        if(Input.GetKey(KeyCode.A)) {
+            MovingLeft();
+        }
 
-        }
-        else if (Input.GetKey(KeyCode.A))
+        //MOVING RIGHT
+        else if(Input.GetKey(KeyCode.D))
         {
-            transform.Translate(-playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run left
+            MovingRight();
+        }
 
-        }
-        else if(Input.GetKeyDown(KeyCode.W))
-        {
-           
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-        }
-        
+
     }
     //calling when player falls below 0 hp
     public void Die()
     {
-        Destroy(this.gameObject);
+            print("dead");
+            Destroy(this.gameObject);
+     
     }
+
+    public void Jump()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+    }
+
+    public void MovingRight()
+    {
+      
+            transform.Translate(playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run right
+
+      
+    }
+    public void MovingLeft()
+    {
+        transform.Translate(-playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run left
+    }
+
     //display when player is alive
     private void OnEnable()
     {

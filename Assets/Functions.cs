@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Functions : PlayerAnimal
+public class Functions : MonoBehaviour
 {
     public int coinScore;
     public Text scoreText;
 
      void Start()
     {
+        print(Sum(36, 24));
+        print(Multi(36, 24));
+
+
         coinScore = 0;
         scoreText.text = "Score: " + coinScore.ToString();
 
@@ -22,5 +26,13 @@ public class Functions : PlayerAnimal
 
     }
    
+    int Sum(int a,int b)
+    {
+        return a + b;
+    }
 
+    int Multi(int a, int b)
+    {
+        return a * b;
+    }        
 }
