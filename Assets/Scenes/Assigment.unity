@@ -146,11 +146,11 @@ RectTransform:
   m_Father: {fileID: 1455461744}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 419}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 581, y: 105}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &86539703
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 479, y: -21}
+  m_AnchoredPosition: {x: 641, y: -111.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209412556
@@ -684,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 471, y: 275.4}
+  m_AnchoredPosition: {x: 635, y: 239.3}
   m_SizeDelta: {x: 211.1, y: 111.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &601811983
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5188679, g: 0.32062122, b: 0.32062122, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -820,10 +820,10 @@ RectTransform:
   m_Father: {fileID: 1455461744}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 468, y: 352.38727}
-  m_SizeDelta: {x: 204.9, y: 30}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -163, y: 393.6}
+  m_SizeDelta: {x: 204.90002, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658344705
 MonoBehaviour:
@@ -1005,11 +1005,11 @@ RectTransform:
   m_Father: {fileID: 1455461744}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 88.20001, y: -325}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 664, y: -275}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &701985463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 382}
+  m_AnchoredPosition: {x: 33, y: 382}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352926243
@@ -1715,11 +1715,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 23
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 232
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1200, y: 900}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2216,10 +2216,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2030122394}
   - component: {fileID: 2030122393}
+  - component: {fileID: 2030122391}
+  - component: {fileID: 2030122395}
   - component: {fileID: 2030122392}
   - component: {fileID: 2030122390}
-  - component: {fileID: 2030122395}
-  - component: {fileID: 2030122391}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2242,6 +2242,9 @@ MonoBehaviour:
   speed: 4
   stoppingDistance: 5
   retreatDistance: 4
+  startTimeBtwShots: 3
+  projectilePlayer: {fileID: 5625123758851205841, guid: 739da38ea7c89d14a8236486c43e4dd1,
+    type: 3}
 --- !u!61 &2030122391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2321,7 +2324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030122389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.55, y: 0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

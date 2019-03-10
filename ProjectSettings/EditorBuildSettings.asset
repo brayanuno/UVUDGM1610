@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/RPGHEROES.unity
-    guid: bde68b3acb26ad148820e33ad35a6dbe
-  - enabled: 1
-    path: Assets/Scenes/RPGHEROESMENU.unity
-    guid: 45bc2c4574002604380f2d6f8e285520
+    path: Assets/Scenes/Assigment.unity
+    guid: 22ad7d3e355be0141975bfc968abb4b6
   m_configObjects: {}

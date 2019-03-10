@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\RandomSpawn.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\Shotting\Enemies.cs" />
+    <Compile Include="Assets\Scripts\Shotting\Projectile.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
