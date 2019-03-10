@@ -12,8 +12,6 @@ public class Functions : MonoBehaviour
     {
         print(Sum(36, 24));
         print(Multi(36, 24));
-
-
         coinScore = 0;
         scoreText.text = "Score: " + coinScore.ToString();
 

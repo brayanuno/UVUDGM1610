@@ -17,7 +17,7 @@ public class HealthBar : PlayerAnimal
         hitpoint -= Time.deltaTime * decreasePerMinute / 5f;
         UpdateHealth();
         //if player has below 0 hp
-        if (hitpoint < 0)
+        if (hitpoint <= 0)
         {
             hitpoint = 0;
             Die();

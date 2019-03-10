@@ -60,13 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ArrayListDict.cs" />
+    <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\CoinPicker.cs" />
     <Compile Include="Assets\Functions.cs" />
-    <Compile Include="Assets\GenericPickUp.cs" />
     <Compile Include="Assets\HealthBar.cs" />
     <Compile Include="Assets\PlayerAnimal.cs" />
-    <Compile Include="Assets\PowersUp.cs" />
+    <Compile Include="Assets\PowerUps.cs" />
+    <Compile Include="Assets\PracticeScripts\ArrayListDict.cs" />
+    <Compile Include="Assets\PracticeScripts\GenericPickUp.cs" />
+    <Compile Include="Assets\PracticeScripts\Switches.cs" />
     <Compile Include="Assets\RandomSpawn.cs" />
     <Compile Include="Assets\Score.cs" />
     <Compile Include="Assets\ScriptHeadball\ArcS\ArcPlayer.cs" />
@@ -77,7 +79,6 @@
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\ScriptHeadball\Powers.cs" />
     <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
-    <Compile Include="Assets\Switches.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

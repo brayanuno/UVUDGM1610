@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerAnimal : MonoBehaviour
 {
+    public GameObject player;
     public GameObject collect;
+    public PowerUps powerUps;
+
     public int playerSpeed = 4;
     public int jumpHeight = 5;
 
@@ -16,7 +19,7 @@ public class PlayerAnimal : MonoBehaviour
 
     private void Start()
     {
-        
+       
     }
     void FixedUpdate()
     {
@@ -41,13 +44,27 @@ public class PlayerAnimal : MonoBehaviour
             MovingRight();
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            StartCoroutine(powerUps.UsePower(1));
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            StartCoroutine(powerUps.UsePower(2));
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            StartCoroutine(powerUps.UsePower(3));
+        }
 
     }
     //calling when player falls below 0 hp
     public void Die()
     {
             print("dead");
-            Destroy(this.gameObject);
+            Destroy(player);
      
     }
 

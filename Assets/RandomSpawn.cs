@@ -8,8 +8,8 @@ public class RandomSpawn : CoinPicker
     public float spawnRate = 3f; //time to respawn the next 
     public float nextSpawn = 0f;
     private float rand;
-    private Vector2 whereToSpawn;
-    public  GameObject instanstiateCoin;
+    public Vector2 whereToSpawn;
+    public GameObject instanstiateCoin;
 
     void Update()
     {
@@ -18,7 +18,7 @@ public class RandomSpawn : CoinPicker
         {
             //setting random numbers from 1 to 6
             rand = Random.Range(-8.4f, 8.4f);
-            whereToSpawn = new Vector2(rand, transform.position.y);
+            whereToSpawn = new Vector2(rand, -1.98f);
             instanstiateCoin = Instantiate(coin, whereToSpawn, Quaternion.identity); //storing instantiate prefab
             nextSpawn = Time.time + spawnRate;
 
