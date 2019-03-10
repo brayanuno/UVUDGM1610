@@ -79,6 +79,7 @@
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\ScriptHeadball\Powers.cs" />
     <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
+    <Compile Include="Assets\Timer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
