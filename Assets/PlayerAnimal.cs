@@ -44,17 +44,17 @@ public class PlayerAnimal : MonoBehaviour
             MovingRight();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && powerUps.disablePower[0] == true)
         {
             StartCoroutine(powerUps.UsePower(1));
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && powerUps.disablePower[1] == true)
         {
             StartCoroutine(powerUps.UsePower(2));
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && powerUps.disablePower[2] == true)
         {
             StartCoroutine(powerUps.UsePower(3));
         }
