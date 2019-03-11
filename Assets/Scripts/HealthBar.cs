@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : PlayerAnimal
+public class HealthBar : MonoBehaviour
 {
+    public PlayerAnimal player;
     public Image healthBar;
     public Text ratioText;
 
     public float hitpoint = 150;
     private float maxHitpoint = 150;
-    private float decreasePerMinute = 60f;
+    private float decreasePerMinute = 50f;
 
     void Update()
     {
@@ -20,7 +21,7 @@ public class HealthBar : PlayerAnimal
         if (hitpoint <= 0)
         {
             hitpoint = 0;
-            Die();
+            player.Die();
         }
         //if player reaches the max hit point
         if (hitpoint > maxHitpoint)
@@ -28,33 +29,33 @@ public class HealthBar : PlayerAnimal
             hitpoint = maxHitpoint;
         }
 
-        if (hitpoint > 0)
-        { 
-            if (hitpoint > 0 && hitpoint > 10)
-            {
-                print("terrible HP");
-            }
-            else if (hitpoint > 0 && hitpoint < 20)
-            {
-                print("bad HP");
-            }
-            else if (hitpoint > 0 && hitpoint < 30)
-            {
-                print("low HP");
-            }
-            else if (hitpoint > 0 && hitpoint < 40)
-            {
-                print("average HP");
-            }
-            else if (hitpoint > 0 && hitpoint < 50)
-            {
-                print("medium HP");
-            }
-            else if (hitpoint > 0 && hitpoint < 60)
-            {
-                print("high HP");
-            }
-        } 
+        //if (hitpoint > 0)
+        //{ 
+            //if (hitpoint > 0 && hitpoint > 10)
+           // {
+                //print("terrible HP");
+            //}
+            //else if (hitpoint > 0 && hitpoint < 20)
+            //{
+               // print("bad HP");
+            //}
+            //else if (hitpoint > 0 && hitpoint < 30)
+            //{
+            //    print("low HP");
+            //}
+            //else if (hitpoint > 0 && hitpoint < 40)
+            //{
+             //   print("average HP");
+            //}
+            //else if (hitpoint > 0 && hitpoint < 50)
+            //{
+               // print("medium HP");
+            //}
+            //else if (hitpoint > 0 && hitpoint < 60)
+           // {
+               // print("high HP");
+            //}
+       // } 
     }
 
         private void UpdateHealth()

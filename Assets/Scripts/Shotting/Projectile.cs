@@ -5,16 +5,34 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 20f;
-    public HealthBar healthBar;
+    //public HealthBar healthBar;
     private Transform player;
     private Vector2 target;
+    private int ProjectileDamage;
 
+    private HealthBar healthBar;
+
+    private void Awake()
+    {
+        healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
+        ProjectileDamage = 50;
+    }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //targeting the player
         target = new Vector2(player.position.x, player.position.y); 
+    }
+    //if projectile had hit the player destroy the player(only for now)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            print("you were being hiited");
+            healthBar.hitpoint -= ProjectileDamage;
+        }
+        
     }
 
     // Update is called once per frame
@@ -29,16 +47,7 @@ public class Projectile : MonoBehaviour
             DestroyProjectile();
         }
     }
-    //if projectile had hit the player destroy the player(only for now)
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            DestroyProjectile();
-            Destroy(GameObject.FindGameObjectWithTag("Player"));
-            Destroy(GameObject.Find("Canvas"));
-        }
-    }
+
     //destroying the projectile
     void DestroyProjectile()
     {

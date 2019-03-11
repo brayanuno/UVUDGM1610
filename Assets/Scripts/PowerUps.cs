@@ -32,7 +32,7 @@ public class PowerUps : MonoBehaviour
                     playerAnimal.playerSpeed = 10;
                     powerUps[0].GetComponent<Image>().color = Color.white;
                     yield return new WaitForSeconds(powerSeconds);
-                    disablePower[0] = false; //disabling the power to rehuse in the player
+                    disablePower[0] = false; //disabling the power to dont use the player use the player again
                     playerAnimal.playerSpeed = 4;
                     Destroy(powerUps[0]);
                     break;
@@ -41,7 +41,7 @@ public class PowerUps : MonoBehaviour
                     playerAnimal.jumpHeight = 10;
                     powerUps[1].GetComponent<Image>().color = Color.white;
                     yield return new WaitForSeconds(powerSeconds);
-                    disablePower[1] = false; //disabling the power to rehuse in the player
+                    disablePower[1] = false; //disabling the power to dont use the player use the player again
                     playerAnimal.jumpHeight = 5;
                     Destroy(powerUps[1]);
                     break;
@@ -50,7 +50,7 @@ public class PowerUps : MonoBehaviour
                     healthBar.hitpoint += 40;
                     powerUps[2].GetComponent<Image>().color = Color.white;
                     yield return new WaitForSeconds(powerSeconds);
-                    disablePower[2] = false; //disabling the power to rehuse in the player
+                    disablePower[2] = false; //disabling the power to dont use the player use the player again
                     Destroy(powerUps[2]);
                     break;
             }

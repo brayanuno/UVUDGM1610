@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  HealthBar: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!212 &2635311229970833084
 SpriteRenderer:
   m_ObjectHideFlags: 0

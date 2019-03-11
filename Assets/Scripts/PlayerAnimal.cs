@@ -63,9 +63,8 @@ public class PlayerAnimal : MonoBehaviour
     //calling when player falls below 0 hp
     public void Die()
     {
-            print("dead");
             Destroy(player);
-     
+            Destroy(GameObject.Find("Canvas"));
     }
 
     public void Jump()
