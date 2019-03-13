@@ -9,6 +9,8 @@ TagManager:
   - HeadCollider
   - ball
   - coin
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

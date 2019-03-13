@@ -60,6 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Free_Pack\BURLY-MAN_1_swordsman\Free_GM.cs" />
+    <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\CharacterController_2D.cs" />
+    <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\ColliderEvent_Sender.cs" />
+    <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\Demo_GM.cs" />
+    <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\DestroyEffect.cs" />
+    <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\WoodDoll_Mgr.cs" />
     <Compile Include="Assets\PracticeScripts\ArrayListDict.cs" />
     <Compile Include="Assets\PracticeScripts\GenericPickUp.cs" />
     <Compile Include="Assets\PracticeScripts\Switches.cs" />
@@ -71,17 +77,20 @@
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\ScriptHeadball\Powers.cs" />
     <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\CoinPicker.cs" />
-    <Compile Include="Assets\Scripts\Functions.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\PlayerAnimal.cs" />
-    <Compile Include="Assets\Scripts\PowerUps.cs" />
-    <Compile Include="Assets\Scripts\RandomSpawn.cs" />
-    <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\Enemies Ai\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager\CameraController.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager\MovingPlattform.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager\PowerUps.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager\RandomSpawn.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\CoinPicker.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\Functions.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\PlayerAnimal.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Shotting\Enemies.cs" />
     <Compile Include="Assets\Scripts\Shotting\Projectile.cs" />
-    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Timer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

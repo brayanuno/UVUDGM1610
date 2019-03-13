@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             print("you were being hiited");
-            healthBar.hitpoint -= ProjectileDamage;
+            healthBar.TakeDamage(ProjectileDamage);
         }
         
     }
