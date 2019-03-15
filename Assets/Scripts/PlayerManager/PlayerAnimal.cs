@@ -11,10 +11,12 @@ public class PlayerAnimal : MonoBehaviour
     public PowerUps powerUps;
     private PlayerBehaviour playerBehaviour;
 
-    public int playerSpeed = 4;
-    public int jumpHeight = 30;
+    public float playerSpeed ;
+    public int jumpHeight = 50;
 
     public bool jump;
+
+    public bool move;
     bool B_FacingRight = true;
     //public Transform groundCheck;
     //public float groundCheckRadius;
@@ -23,6 +25,8 @@ public class PlayerAnimal : MonoBehaviour
 
     private void Start()
     {
+        move = true;
+        playerSpeed = 9f; //playerSpeed
         jump = true;
         animator = this.transform.Find("PlayerModel").GetComponent<Animator>();
         playerBehaviour = GetComponent<PlayerBehaviour>();
@@ -32,7 +36,7 @@ public class PlayerAnimal : MonoBehaviour
     void Update()
     {
         //JUMPING
-        if (Input.GetKeyDown(KeyCode.W) )
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if(jump == true)
             {
@@ -44,26 +48,32 @@ public class PlayerAnimal : MonoBehaviour
         }
         //MOVING LEFT
         if(Input.GetKey(KeyCode.A)) {
-            MovingLeft();
+            if(move)
+            {
+                MovingLeft();
+            }
         }
         
 
         //MOVING RIGHT
         if(Input.GetKey(KeyCode.D))
         {
-            MovingRight();
+            if (move)
+            {
+                MovingRight();
+            }
         }
 
         //USE RIGHT CLICK
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            //animator.SetTrigger("Attack");
+            
             animator.SetTrigger("Attack2");
             playerBehaviour.Attack1();
         }
 
             //USE LEFT CLICK
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) )
         {
             animator.SetTrigger("Attack");
         }
@@ -87,7 +97,7 @@ public class PlayerAnimal : MonoBehaviour
 
         //changin to run and idle animations
         if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
-            animator.SetFloat("MoveSpeed",0.6f); //running
+            animator.SetFloat("MoveSpeed", 0.6f); //running
         else
             animator.SetFloat("MoveSpeed", 0f); //idle
     }
@@ -95,7 +105,7 @@ public class PlayerAnimal : MonoBehaviour
     //when player touch the ground
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
         {
             jump = true;
         }
@@ -110,22 +120,21 @@ public class PlayerAnimal : MonoBehaviour
 
     public void Jump()
     {
-        // GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
         rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
     }
 
     public void MovingRight()
     {
-      
         transform.Translate(playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run right
 
-        if(!B_FacingRight)
+        if (!B_FacingRight)
         {
             Flip();
         }
     }
     public void MovingLeft()
     {
+        
         transform.Translate(-playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run left
         if (B_FacingRight)
         {

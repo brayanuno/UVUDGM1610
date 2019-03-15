@@ -77,6 +77,7 @@
     <Compile Include="Assets\ScriptHeadball\Player.cs" />
     <Compile Include="Assets\ScriptHeadball\Powers.cs" />
     <Compile Include="Assets\ScriptHeadball\SecondaryPlayer.cs" />
+    <Compile Include="Assets\Scripts\Collisions\Enemies\Back.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\EnemyController.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\MovingPlattform.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\Shotting\Enemies.cs" />
     <Compile Include="Assets\Scripts\Shotting\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelControls.cs" />
     <Compile Include="Assets\Scripts\UI\Timer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
