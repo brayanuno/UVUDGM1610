@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     private float radarRange = 10f;
-    private float AttackRange = 3f;
+    private float AttackRange = 2f;
     private int damage = 10;
     private float enemySpeed;
     private float lastAttackTime;
     private float attackDelay = 3f; //seconds to attack again
+    private float stopRange = 1.8f;
 
     public Text textHitPoint;
     private bool B_FacingRight = true;
@@ -19,7 +20,7 @@ public class EnemyController : MonoBehaviour
     public Image enemyhealthbar; //image health bar
     private float enemyHitPoint = 150; //enemy hit point
     private float maxEnemyHitpoint = 150;
-
+    
     Animator animator;
     Transform target;
     private HealthBar healthBar; //healthbar instance
@@ -31,7 +32,10 @@ public class EnemyController : MonoBehaviour
     private Vector2 movementDirection;  //random range to move the enemy
     private Vector2 movementPerSecond; //this changes every change time
     private bool isEnemyClose; //is enemy close?
-    public bool move;
+
+    public bool receivingDamage;
+    public bool move; //the enemy can move
+//a value if true the player can attack,otherwise cannot attak
 
     //storing x position
     float lastXVal;
@@ -40,6 +44,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         move = true;
         enemySpeed = 6f;
         lastXVal = transform.position.x; //storing the x value
@@ -55,42 +60,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+        movementAttackAI();
+        BeingHitted();
         UpdateHealth();
-
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-        //if player is close to the radius 
-        if (distance < radarRange) //10f is the range
-        {
-            isEnemyClose = true;
-            FollowTarget(); //follow the target if is in range
-
-            if(distance < AttackRange) //the enemy is close enough to attack
-            {
-                move = false;
-                //check if the enough attack delay passed to attack again
-                if (Time.time > lastAttackTime + attackDelay)
-                {
-                    animator.SetTrigger("Attack");
-                    //atacking only the player
-                    healthBar.TakeDamage(damage);
-                    //Record the time we attacked
-                    lastAttackTime = Time.time;
-                }
-            } else {
-                move = true;
-            }
-
-        } else {      
-            isEnemyClose = false;
-            move = true;
-        }
-
         if (!isEnemyClose)
         {
-            if(move) {
+            if(move) 
                 MoveEnemy();
-            }
-           
         }
 
         //checking the changing transform in every frame
@@ -102,6 +79,8 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("MoveSpeed", 0.6f); //running
         else
             animator.SetFloat("MoveSpeed", 0f); //idle
+
+       
     }
     
         
@@ -113,6 +92,7 @@ public class EnemyController : MonoBehaviour
 
     private void FollowTarget()
     {
+        //always keep distance from player and enemy
         if(move)
         {
             //the enemy only will move in x axis 
@@ -125,7 +105,7 @@ public class EnemyController : MonoBehaviour
     private void calcuateNewMovementVector()
     {
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
-        movementDirection = new Vector2(Random.Range(-2.0f, 2.0f), 0);
+        movementDirection = new Vector2(Random.Range(-1.5f, 1.5f), 0);
         //new movement iwth fixed speed
         movementPerSecond = movementDirection * enemySpeed;
     }
@@ -148,36 +128,36 @@ public class EnemyController : MonoBehaviour
     //checking and fliping in the correct way
     private void CheckingDirection()
     {
-                if(transform.hasChanged)
-                    //facing left
-                    if (transform.position.x <lastXVal)
-                    {
-                        lastXVal = transform.position.x;
-                        if (B_FacingRight)
-                        {
-                            Flip();
-                        }
-                        Debug.Log("Decreased!");
-                        //Update lastXVal
-                        lastXVal = transform.position.x;
-                    }
-                
-                    //facing right
-                    if (transform.position.x > lastXVal)
-                    {
-                        lastXVal = transform.position.x;
+        if(transform.hasChanged) { 
+        //facing left
+            if (transform.position.x <lastXVal)
+            {
+            lastXVal = transform.position.x;
+                if (B_FacingRight)
+                {
+                   Flip();
+                }
+                     
+            //Update lastXVal
+            lastXVal = transform.position.x;
+            }
 
-                        if (!B_FacingRight)
-                        {
-                            Flip();
-                        }
-                        Debug.Log("Increased");
-                        //facing right
+            //facing right
+            if (transform.position.x > lastXVal)
+            {
+                lastXVal = transform.position.x;
 
-                        //Update lastXVal
-                        lastXVal = transform.position.x;
-                    }
+                if (!B_FacingRight)
+                {
+                    Flip();
+                }
+                Debug.Log("Increased");
+                //facing right
 
+                //Update lastXVal
+                lastXVal = transform.position.x;
+            }
+        }
             transform.hasChanged = false;
         
     }
@@ -221,6 +201,58 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    
+   private void movementAttackAI()
+    {
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+        //if player is close to the radius 
+        if (distance < radarRange) //is player is in the radar of the enemy
+        {
+            isEnemyClose = true;
+            FollowTarget(); //follow the target if is in range
+
+            if (distance < AttackRange && isEnemyClose) //the enemy is close enough to attack
+            {
+                //check if the enough attack delay passed to attack again
+                if (Time.time > lastAttackTime + attackDelay)
+                {
+                    animator.SetTrigger("Attack");
+                    //atacking only the player
+                    healthBar.TakeDamage(damage);
+                    //animating the enemy character(player)
+                    PlayerManager.instance.player.GetComponent<PlayerBehaviour>().receivingDamage = true;
+
+                    //Record the time we attacked
+                    lastAttackTime = Time.time;
+                } else { PlayerManager.instance.player.GetComponent<PlayerBehaviour>().receivingDamage = false; }
+
+                if (distance < stopRange) //stop the movement
+                {
+                    move = false;
+                }
+
+            }
+            else
+            {
+                move = true;
+            }
+
+        }
+        else
+        {
+            isEnemyClose = false;
+            move = true; //move enemy is not close
+        }
+    }
+
+    public void BeingHitted()
+    {
+        if (receivingDamage)
+        {
+            print("being hitter");
+            animator.SetTrigger("Hit");
+            receivingDamage = false;
+        }
+    }
+
 
 }

@@ -18,10 +18,13 @@ public class PlayerAnimal : MonoBehaviour
 
     public bool move;
     bool B_FacingRight = true;
-    //public Transform groundCheck;
-    //public float groundCheckRadius;
-    //public LayerMask WhatIsGround;
     private Rigidbody2D rb;
+
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
@@ -48,28 +51,21 @@ public class PlayerAnimal : MonoBehaviour
         }
         //MOVING LEFT
         if(Input.GetKey(KeyCode.A)) {
-            if(move)
-            {
+            
                 MovingLeft();
-            }
         }
         
 
         //MOVING RIGHT
         if(Input.GetKey(KeyCode.D))
         {
-            if (move)
-            {
                 MovingRight();
-            }
         }
 
         //USE RIGHT CLICK
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            
-            animator.SetTrigger("Attack2");
-            playerBehaviour.Attack1();
+            //animator.SetTrigger("Attack2");
         }
 
             //USE LEFT CLICK
@@ -114,6 +110,7 @@ public class PlayerAnimal : MonoBehaviour
     //calling when player falls below 0 hp
     public void Die()
     {
+            animator.Play("Die");
             Destroy(player);
             Destroy(GameObject.Find("Canvas"));
     }
@@ -162,5 +159,10 @@ public class PlayerAnimal : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1; //flip
         this.transform.localScale = theScale;
+    }
+
+    private void PrefabCharacter()
+    {
+
     }
 }

@@ -6,26 +6,35 @@ public class PlayerBehaviour : MonoBehaviour
 {
     private Animator animator;
     private EnemyController enemyController; //store the instance of enemy controller
-    private float radarPlayer = 15f; //the radar range
-    private float attackRange = 4f; //the attack range
-    Transform[] transArray;
+    private PlayerAnimal playerAnimal;
+    private float radarPlayer = 15f; //the radar range 
+    private float attackRange = 4f; //the attack range will not work collider are better
+    public Transform[] transArray;
 
     public int playerDamage = 10;
     private float lastAttackTime;  //Record the time we attacked
     public float attackDelay;  //seconds to attack again 
-    
-    private bool isEnemyClose;
+
+    public bool receivingDamage; //the enemy is beign hiite run animation
+    public bool isEnemyClose;  //the enemy is close?
+
+    private void Awake()
+    {
+
+    }
 
 
     private void Start()
     {
-        attackDelay = 0.367f; //the exact frame of the animation attack;
+        //isNoRange = true;
+        attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         animator = gameObject.transform.Find("PlayerModel").GetComponent<Animator>();
-        
+        playerAnimal = PlayerManager.instance.player.GetComponent<PlayerAnimal>();
     }       
 
     private void Update()
     {
+       
         //storing all the enemies in the scene
         GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         transArray = new Transform[Enemies.Length];
@@ -34,6 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
             transArray[i] = Enemies[i].transform;
         }
         AttackingEnemies();
+        BeingHitted();
     }
 
     //getting the closest enemy and best target
@@ -69,23 +79,24 @@ public class PlayerBehaviour : MonoBehaviour
         //if the player is close to the radar range
         if (distance < radarPlayer)
         {
-            //calling the PanelControl to active the alert of an enemy for 5 seconds
+            //calling the PanelControl to active the alert of an enemy 
             PanelControls.instance.ActivatePanel(PanelControls.instance.AlertPanel,bestTargetName);
 
             //if the player is close to the attack range
-            if (isEnemyClose)
+            if (isEnemyClose == true)
             {
-                print("is close is true");
                 //check if the enough attack delay passed to attack again and the animation is running
-                if (Time.time > lastAttackTime + attackDelay && isPlaying(animator, "Attack"))
+                if (Time.time > lastAttackTime + attackDelay && isPlaying(animator, "Attack") && isEnemyClose )
                 {
-                    print("animation is playing");
+                  
                     //reducing damage to the enemy
                     enemyController = GetClosestEnemy(transArray).GetComponent<EnemyController>();
                     enemyController.ReceivingDamage(playerDamage);
+                    enemyController.receivingDamage = true;
 
-                   //Record the time we attacked
-                   lastAttackTime = Time.time;
+
+                  //Record the time we attacked
+                  lastAttackTime = Time.time;
                 }
             }
 
@@ -101,7 +112,6 @@ public class PlayerBehaviour : MonoBehaviour
             return true;
         else
             return false;
-
     }
 
     private void OnDrawGizmos()
@@ -113,33 +123,32 @@ public class PlayerBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-
-    public void Attack1()
-    {
-        
-    }
-
-    public void Attack2()
-    {
-
-    }
-
+    //if player is in collision
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(gameObject.GetComponent<Collider2D>().enabled == true)
         {
-            //gameObject.GetComponent<PlayerAnimal>().move = false;
-            print("you can move too close");
-            isEnemyClose = true;
-            gameObject.GetComponent<PlayerAnimal>().jump = true;
-        } else
-        {
-            //gameObject.GetComponent<PlayerAnimal>().move = true;
-            isEnemyClose = false;
-            
-        }
+            // == enemy
+            if (collision.gameObject.transform.name == GetClosestEnemy(transArray).transform.name)
+            {
+                isEnemyClose = true;
+            }
+            else
+            {
+                isEnemyClose = false;
+            }
+        } 
     }
+
+    private void BeingHitted()
+    {
+        if (receivingDamage)
+        {
  
+            animator.SetTrigger("Hit");
+            receivingDamage = false;
+        } 
+    }
 
 }
 
