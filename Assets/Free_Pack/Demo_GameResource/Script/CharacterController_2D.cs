@@ -19,82 +19,86 @@ public class CharacterController_2D : MonoBehaviour {
 
     public SpriteRenderer[] m_SpriteGroup;
 
-    public bool Once_Attack = false;
 
+
+    public CharacterID characterID = CharacterID.NONE; 
 
     // Use this for initialization
     void Start () {
         m_rigidbody = this.GetComponent<Rigidbody2D>();
-        m_Animator = this.transform.FindChild("BURLY-MAN_1_swordsman_model").GetComponent<Animator>();
+        m_Animator = this.transform.FindChild("model").GetComponent<Animator>();
         m_tran = this.transform;
-        m_SpriteGroup = this.transform.FindChild("BURLY-MAN_1_swordsman_model").GetComponentsInChildren<SpriteRenderer>(true);
+        m_SpriteGroup = this.transform.FindChild("model").GetComponentsInChildren<SpriteRenderer>(true);
 
   
     }
-	
+
+    private float UpdateTic = 0;
+
+   
 	// Update is called once per frame
 	void Update () {
 
-
-        spriteOrder_Controller();
-
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Once_Attack = false;
-            Debug.Log("Lclick");
-            m_Animator.SetTrigger("Attack");
-
-            m_rigidbody.velocity = new Vector3(0, 0, 0);
-
-
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            Once_Attack = false;
-            Debug.Log("Rclick");
-            m_Animator.SetTrigger("Attack2");
-
-            m_rigidbody.velocity = new Vector3(0, 0, 0);
-
-
-
-        }
-
-
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-          
-            Debug.Log("1");
-            m_Animator.Play("Hit");
-
-
-
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Debug.Log("2");
-            m_Animator.Play("Die");
-
-
-        }
-
-
-        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die")||
-            m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")|| m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
-            return;
-
-        Move_Fuc();
-
-
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
+        UpdateTic += Time.deltaTime;
        
+   
 
 
-        m_Animator.SetFloat("MoveSpeed", Mathf.Abs(h )+Mathf.Abs (v));
+        if (UpdateTic > 0.01f)
+        {
+
+          
+            spriteOrder_Controller();
+
+            if (characterID != Demo_GM.Gm.characterid)
+            {
+                if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+                {
+                    m_Animator.Play("Idle");
+                    return;
+                }
+                return;
+            }
+          
+
+           
+
+            Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(new Vector3 (this.transform.position.x, this.transform.position.y+3f, this.transform.position.z));
+            Vector2 WorldObject_ScreenPosition = new Vector2(
+            ((ViewportPosition.x * Demo_GM.Gm.CanvasUIRect.sizeDelta.x) - (Demo_GM.Gm.CanvasUIRect.sizeDelta.x * 0.5f)),
+            ((ViewportPosition.y * Demo_GM.Gm.CanvasUIRect.sizeDelta.y) - (Demo_GM.Gm.CanvasUIRect.sizeDelta.y * 0.5f)));
+
+            Debug.Log(Demo_GM.Gm.CanvasUIRect);
+
+            Demo_GM.Gm.Pointer.anchoredPosition = WorldObject_ScreenPosition;
+            // Input Key
+            Keypad_Controller();
+
+
+
+
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") ||
+                m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") ||
+                m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") ||
+                m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+                return;
+
+            Move_Fuc();
+
+
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+
+            m_Animator.SetFloat("MoveSpeed", Mathf.Abs(h) + Mathf.Abs(v));
+
+
+
+
+            UpdateTic = 0;
+
+        }
+
+      
 
  
     }
@@ -129,6 +133,57 @@ public class CharacterController_2D : MonoBehaviour {
 
     }
 
+    //Input Keypad
+    void Keypad_Controller()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            Debug.Log("Lclick");
+            m_Animator.SetTrigger("Attack");
+
+            m_rigidbody.velocity = new Vector3(0, 0, 0);
+
+
+
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+
+            Debug.Log("Rclick");
+            m_Animator.SetTrigger("Attack2");
+
+            m_rigidbody.velocity = new Vector3(0, 0, 0);
+
+          
+      
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Debug.Log("1");
+            m_Animator.Play("Hit");
+     
+
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log("2");
+            m_Animator.Play("Die");
+
+          
+
+        }
+
+
+  
+
+
+
+    }
     // character Move Function
     void Move_Fuc()
     {
@@ -140,6 +195,7 @@ public class CharacterController_2D : MonoBehaviour {
                 Filp();
 
 
+
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -147,24 +203,27 @@ public class CharacterController_2D : MonoBehaviour {
             m_rigidbody.AddForce(Vector2.right * MoveSpeed);
             if (!B_FacingRight)
                 Filp();
+
+
         }
 
         if (Input.GetKey(KeyCode.W))
         {
            // Debug.Log("up");
             m_rigidbody.AddForce(Vector2.up * MoveSpeed);
-          
+
+      
+
         }
         else if (Input.GetKey(KeyCode.S))
         {
            // Debug.Log("Down");
             m_rigidbody.AddForce(Vector2.down * MoveSpeed);
-          
-            
+
+
         }
 
 
-     
 
     }
 
@@ -183,12 +242,16 @@ public class CharacterController_2D : MonoBehaviour {
         m_tran.localScale = theScale;
     }
 
+    public void Hitted()
+    {
+        m_Animator.Play("Hit");
 
- 
-    //   Sword,Dagger,Spear,Punch,Bow,Gun,Grenade
+    }
 
 
   
 
-  
+
+
+
 }

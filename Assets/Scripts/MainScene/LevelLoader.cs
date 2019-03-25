@@ -10,11 +10,13 @@ public class LevelLoader : MonoBehaviour
     public Slider slider;
     public Text textPercentage;
 
-    //LoadScene
+    //LoadScene button 
     public void LoadLvel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
+
     }
+
 
     IEnumerator LoadAsynchronously (int scenIndex)
     {

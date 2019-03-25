@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class storage all the information of the player 
+/// This class storage all the information 
 /// </summary>
 /// 
 public class InGameCharacter
-{
-    private string userName;
-    private int hitPoint;
-    private float radarPlayer;
-    private float playerDamage;
-    private float speedPlayer;
-    private float jumpHeight;
-    
+{ 
+    public int id;
+    public string userName;
+    public int hitPoint;
+    public float radarPlayer;
+    public int playerDamage;
+    public float speedPlayer;
+    public float jumpHeight;
+   
 
     //parameters to send to another 
-    public InGameCharacter(string userName,int hitPoint, float radarPlayer, float playerDamage, float speedPlayer, float jumpHeight) {
+    public InGameCharacter(int id,string userName,int hitPoint, float radarPlayer, int playerDamage, float speedPlayer, float jumpHeight) {
 
+        this.id = id;
         this.userName = userName;
         this.hitPoint = hitPoint;
         this.radarPlayer = radarPlayer;
@@ -26,8 +28,5 @@ public class InGameCharacter
         this.speedPlayer = speedPlayer;
         this.jumpHeight = jumpHeight;
     }
-    public void CreateClass()
-    {
-
-    }
+    
 }

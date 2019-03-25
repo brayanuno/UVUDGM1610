@@ -6,11 +6,17 @@ public class PlayerManager : MonoBehaviour
 {
     //singleton to call to other scripts
     public static PlayerManager instance;
-
+    public GameObject player;
     void Awake()
     {
+
         instance = this;
     }
 
-    public GameObject player;
+    private void FixedUpdate()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+   
+    
 }

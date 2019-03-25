@@ -4,46 +4,55 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [SerializeField] private PlayerInfo playerInfo;
     private Animator animator;
     private EnemyController enemyController; //store the instance of enemy controller
-    private PlayerAnimal playerAnimal;
-    private float radarPlayer = 15f; //the radar range 
-    private float attackRange = 4f; //the attack range will not work collider are better
-    public Transform[] transArray;
+    private float radarPlayer; //the radar range  15
+    private Transform[] transArray;
 
-    public int playerDamage = 10;
     private float lastAttackTime;  //Record the time we attacked
     public float attackDelay;  //seconds to attack again 
 
+    public int playerDamage;
     public bool receivingDamage; //the enemy is beign hiite run animation
     public bool isEnemyClose;  //the enemy is close?
 
-    private void Awake()
+    void Start()
     {
-
+        playerInfo = PlayerInfo.instance;
+        attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
+        playerDamage = playerInfo.playerDamage;
+        
     }
 
-
-    private void Start()
+    private void FixedUpdate()
     {
-        //isNoRange = true;
-        attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
-        animator = gameObject.transform.Find("PlayerModel").GetComponent<Animator>();
-        playerAnimal = PlayerManager.instance.player.GetComponent<PlayerAnimal>();
-    }       
+        //checking if restart stats is allow
+        if (!playerInfo.restartStats)
+        {
+            return;
+        }
+        else
+        {
+            radarPlayer = playerInfo.radarPlayer;
+            playerDamage = playerInfo.playerDamage;
+        }
+    }
 
     private void Update()
     {
-       
         //storing all the enemies in the scene
-        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        transArray = new Transform[Enemies.Length];
+        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy"); //all the enemies in the scene
+        transArray = new Transform[Enemies.Length]; 
+
         for (int i = 0; i < Enemies.Length; i++ )
         {
             transArray[i] = Enemies[i].transform;
         }
+
         AttackingEnemies();
         BeingHitted();
+        animator = gameObject.transform.Find("PlayerModel").GetComponent<Animator>();
     }
 
     //getting the closest enemy and best target
@@ -80,7 +89,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (distance < radarPlayer)
         {
             //calling the PanelControl to active the alert of an enemy 
-            PanelControls.instance.ActivatePanel(PanelControls.instance.AlertPanel,bestTargetName);
+            PanelControls.instance.ActivatePanel(PanelControls.instance.AlertPanel,bestTargetName + " is close");
 
             //if the player is close to the attack range
             if (isEnemyClose == true)
@@ -88,7 +97,7 @@ public class PlayerBehaviour : MonoBehaviour
                 //check if the enough attack delay passed to attack again and the animation is running
                 if (Time.time > lastAttackTime + attackDelay && isPlaying(animator, "Attack") && isEnemyClose )
                 {
-                  
+
                     //reducing damage to the enemy
                     enemyController = GetClosestEnemy(transArray).GetComponent<EnemyController>();
                     enemyController.ReceivingDamage(playerDamage);
@@ -118,9 +127,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radarPlayer);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     //if player is in collision
@@ -140,15 +146,20 @@ public class PlayerBehaviour : MonoBehaviour
         } 
     }
 
+
+
     private void BeingHitted()
     {
         if (receivingDamage)
         {
- 
             animator.SetTrigger("Hit");
             receivingDamage = false;
         } 
     }
 
+    public GameObject ClosestEnemyObject()
+    {
+        return GetClosestEnemy(transArray).gameObject;
+    }
 }
 

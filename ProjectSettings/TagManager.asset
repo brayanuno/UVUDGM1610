@@ -11,6 +11,12 @@ TagManager:
   - coin
   - Ground
   - Enemy
+  - HealthBar
+  - Username
+  - ScoreManager
+  - Inventory
+  - Panel2
+  - Store
   layers:
   - Default
   - TransparentFX

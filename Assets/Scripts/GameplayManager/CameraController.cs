@@ -7,8 +7,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject player;
     private Vector3 offset;
     // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         /// getting the distance between the player's position and camera's position
         offset = transform.position - player.transform.position;
     }

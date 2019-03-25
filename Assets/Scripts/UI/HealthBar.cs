@@ -5,35 +5,56 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public PlayerAnimal player;
+    private PlayerInfo playerInfo; 
     public Image healthBar;
     public Text ratioText;
     public GameObject HealthDisplayCanvas;
+    private Text username;
+    public int hitpoint;
+    public int maxHitpoint;
 
-
-    public float hitpoint;
-    private float maxHitpoint = 250;
-
-    private void Awake()
+    private void Start()
     {
-        hitpoint = 250f; //setting the playerHealth
+        playerInfo = PlayerInfo.instance;
+        username = GameObject.FindGameObjectWithTag("Username").GetComponent<Text>();
+        
     }
-    void Update()
+    private void FixedUpdate()
     {
+        UpdateHealth();
+        //checking if restart stats is allow
+        if (!playerInfo.restartStats)
+        {
+            return;
+        }
+        else
+        {
+            username.text = playerInfo.username;
+            hitpoint = playerInfo.hitPoint;
+            maxHitpoint = playerInfo.hitPoint;
+        }
+    }
+
+    void Update()
+    { 
+        HealthDisplayCanvas = PlayerManager.instance.player.transform.Find("HealthDisplayCanvas").gameObject;
         //hitpoint -= Time.deltaTime * decreasePerMinute / 5f;
         UpdateHealth();
+
     }
+
     //updating the health everyframe
      private void UpdateHealth()
      {
-         float ratio = hitpoint / maxHitpoint;
-         healthBar.rectTransform.localScale = new Vector3(ratio, 1, 1); //scaling the 
+         float ratio = (float)hitpoint / maxHitpoint;
+         healthBar.rectTransform.localScale = new Vector3(ratio, 1, 1); //scaling the health bar
          ratioText.text = (ratio * 100).ToString("0") + "%";
+
          //if player has below 0 hp
-         if (hitpoint <= 0)
+         if (hitpoint <= 0 && !playerInfo.restartStats)
          {
             hitpoint = 0;
-            player.Die();
+            PlayerManager.instance.player.GetComponent<PlayerAnimal>().Die(); //calling the die function
          }
          //if player reaches the max hit point
          if (hitpoint > maxHitpoint)
@@ -45,17 +66,17 @@ public class HealthBar : MonoBehaviour
      //taking damage
      public void TakeDamage(int damage)
      {
-         hitpoint -= damage;
+         hitpoint = hitpoint - damage;
          StartCoroutine(WaitAndPrint(1.0f , damage));
      }
 
-    //displaying the damage 
+     //displaying the damage 
      public IEnumerator WaitAndPrint(float waitTime , int text)
      {
         HealthDisplayCanvas.SetActive(true);
         HealthDisplayCanvas.transform.Find("Text").GetComponent<Text>().text = "- " + text.ToString(); 
         yield return new WaitForSeconds(waitTime);
         HealthDisplayCanvas.SetActive(false);
-    }
+     }
 }
     

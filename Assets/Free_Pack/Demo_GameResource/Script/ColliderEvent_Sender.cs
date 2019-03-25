@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class ColliderEvent_Sender : MonoBehaviour {
     private CharacterController_2D m_parent;
-    void Start()
-    {
 
-        m_parent = this.transform.root.transform.GetComponent<CharacterController_2D>();
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
     
-        if (m_parent.Once_Attack)
-            return;
+        //if (m_parent.Once_Attack)
+        //    return;
 
-        other.GetComponent<WoodDoll_Mgr>().Sword_Hitted();
-        Debug.Log("hit::" + other.name);
-
-        if (this.GetComponent<BoxCollider2D>().enabled)
+        if (other.CompareTag("Player"))
         {
-            m_parent.Once_Attack = true;
+            other.GetComponent<CharacterController_2D>().Hitted();
+            Debug.Log("hit::" + other.name);
+
+        }
+        else if (other.CompareTag("Monster"))
+        {
+
+
+            other.GetComponent<WoodDoll_Mgr>().Hitted();
+            Debug.Log("hit::" + other.name);
+
 
         }
 
+    
     }
 
 

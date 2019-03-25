@@ -23,8 +23,6 @@ public class WoodDoll_Mgr : MonoBehaviour {
     void spriteOrder_Controller()
     {
         sortingOrder = Mathf.RoundToInt(this.transform.position.y * 100);
-        //Debug.Log("y::" + this.transform.position.y);
-        //  Debug.Log("sortingOrder::" + sortingOrder);
         for (int i = 0; i < m_SpriteGroup.Length; i++)
         {
 
@@ -34,7 +32,7 @@ public class WoodDoll_Mgr : MonoBehaviour {
 
     }
 
-    public void  Sword_Hitted()
+    public void Hitted()
     {
         m_Animator.Play("Hit");
   
