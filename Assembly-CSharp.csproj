@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Inventory\PrefabData.cs" />
     <Compile Include="Assets\Scripts\Inventory\Slot.cs" />
     <Compile Include="Assets\Scripts\Inventory\Store.cs" />
+    <Compile Include="Assets\Scripts\Loops.cs" />
     <Compile Include="Assets\Scripts\MainScene\CreateClassSystem.cs" />
     <Compile Include="Assets\Scripts\MainScene\InGameCharacter.cs" />
     <Compile Include="Assets\Scripts\MainScene\LevelLoader.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Scripts\UI\Coin.cs" />
     <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
     <Compile Include="Assets\Scripts\UI\PanelControls.cs" />
+    <Compile Include="Assets\Scripts\UI\ProfileImage.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\UI\Timer.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

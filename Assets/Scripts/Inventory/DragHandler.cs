@@ -40,6 +40,7 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
             transform.position = startPosition;
             transform.parent = startParent;
         }
+
        
     }
 

@@ -6,35 +6,32 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     public static Store instance;
-    public Item[] itemData;
     [SerializeField] private Transform Panel2Slots; //slots bottom
-
+    [SerializeField] private GameObject NoCoinsPanel;
     public Item[] items; //items values
-    [SerializeField] private GameObject[] ItemsStore;     //items from the store to update
+    [SerializeField] private GameObject[] ItemsStore; //items from the store to update
     public GameObject infoStore;
-
+    private ScoreManager scoreManager;
     public GameObject prefab;
-    private bool buyOnce;
+    private bool buyOnce = false;
     private bool isOpen = false;
+    
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        gameObject.SetActive(false);
         instance = this;
         UpdateSprite(); //updating spirites in the store
-        gameObject.SetActive(false);
-        
+        scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+        NoCoinsPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     //buying once every item
     public void BuyItem(int index)
     {
         buyOnce = true;
+        
         foreach (Transform SlotsTransform in Panel2Slots)
         {
             GameObject item = SlotsTransform.GetComponent<Slot>().item;         
@@ -43,61 +40,147 @@ public class Store : MonoBehaviour
                 if (buyOnce)
                 {
                     GameObject prefabNew = prefab;
-                    SlotsTransform.GetComponent<Slot>().AddItem(ItemInfo(index, prefabNew));
-                    buyOnce = false;
+                    PriceItem(index);
+                    if (PriceItem(index))
+                    {
+                        SlotsTransform.GetComponent<Slot>().AddItem(ItemInfo(index, prefabNew)); //filling the prefab with the itemdata
+                        buyOnce = false;
+                    }
                 }
-            }
-            
+            }  
         }
-      
     }
 
-    
+    IEnumerator WaitSeconds(float waitTime,GameObject obj)
+    {
+        NoCoinsPanel.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        NoCoinsPanel.SetActive(false);
+
+    }
+
+    private bool PriceItem(int index)
+    {
+        bool Available = false;
+        switch(index)
+        {
+            case 0:
+                if(scoreManager.score >= items[0].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[0].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+            case 1:
+                if (scoreManager.score >= items[1].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[1].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+            case 2:
+                if (scoreManager.score >= items[2].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[2].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+            case 3:
+                if (scoreManager.score >= items[3].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[3].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+            case 4:
+                if (scoreManager.score >= items[4].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[4].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+            case 5:
+                if (scoreManager.score >= items[0].cost)
+                {
+                    //30 <= 100
+                    scoreManager.BuyScore(items[0].cost);
+                    Available = true;
+                } else
+                {
+                    StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
+                }
+                break;
+        }
+        return Available;
+        
+    }
+
+    //assigning overy prefab the to be equal to the item data info
     private GameObject ItemInfo(int index,GameObject obj)
     {
         switch (index)
         {
             case 0:
-                obj.GetComponent<PrefabData>().id = itemData[0].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[0].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[0].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[0].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[0].artWork;
+                obj.GetComponent<PrefabData>().id = items[0].id;
+                obj.GetComponent<PrefabData>().itemName = items[0].ItemName;
+                obj.GetComponent<PrefabData>().description = items[0].Description;
+                obj.GetComponent<PrefabData>().cost = items[0].cost;
+                obj.GetComponent<PrefabData>().artWork = items[0].artWork;
                 break;
             case 1:
-                obj.GetComponent<PrefabData>().id = itemData[1].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[1].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[1].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[1].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[1].artWork;
+                obj.GetComponent<PrefabData>().id = items[1].id;
+                obj.GetComponent<PrefabData>().itemName = items[1].ItemName;
+                obj.GetComponent<PrefabData>().description = items[1].Description;
+                obj.GetComponent<PrefabData>().cost = items[1].cost;
+                obj.GetComponent<PrefabData>().artWork = items[1].artWork;
                 break;
             case 2:
-                obj.GetComponent<PrefabData>().id = itemData[2].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[2].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[2].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[2].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[2].artWork;
+                obj.GetComponent<PrefabData>().id = items[2].id;
+                obj.GetComponent<PrefabData>().itemName = items[2].ItemName;
+                obj.GetComponent<PrefabData>().description = items[2].Description;
+                obj.GetComponent<PrefabData>().cost = items[2].cost;
+                obj.GetComponent<PrefabData>().artWork = items[2].artWork;
                 break;
             case 3:
-                obj.GetComponent<PrefabData>().id = itemData[3].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[3].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[3].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[3].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[3].artWork;
+                obj.GetComponent<PrefabData>().id = items[3].id;
+                obj.GetComponent<PrefabData>().itemName = items[3].ItemName;
+                obj.GetComponent<PrefabData>().description = items[3].Description;
+                obj.GetComponent<PrefabData>().cost = items[3].cost;
+                obj.GetComponent<PrefabData>().artWork = items[3].artWork;
                 break;
             case 4:
-                obj.GetComponent<PrefabData>().id = itemData[4].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[4].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[4].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[4].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[4].artWork;
+                obj.GetComponent<PrefabData>().id = items[4].id;
+                obj.GetComponent<PrefabData>().itemName = items[4].ItemName;
+                obj.GetComponent<PrefabData>().description = items[4].Description;
+                obj.GetComponent<PrefabData>().cost = items[4].cost;
+                obj.GetComponent<PrefabData>().artWork = items[4].artWork;
                 break;
             case 5:
-                obj.GetComponent<PrefabData>().id = itemData[5].id;
-                obj.GetComponent<PrefabData>().itemName = itemData[5].ItemName;
-                obj.GetComponent<PrefabData>().description = itemData[5].Description;
-                obj.GetComponent<PrefabData>().cost = itemData[5].cost;
-                obj.GetComponent<PrefabData>().artWork = itemData[5].artWork;
+                obj.GetComponent<PrefabData>().id = items[5].id;
+                obj.GetComponent<PrefabData>().itemName = items[5].ItemName;
+                obj.GetComponent<PrefabData>().description = items[5].Description;
+                obj.GetComponent<PrefabData>().cost = items[5].cost;
+                obj.GetComponent<PrefabData>().artWork =  items[5].artWork;
                 break;
         }
 
@@ -128,7 +211,6 @@ public class Store : MonoBehaviour
             gameObject.SetActive(true);
             isOpen = true;
         }
-
     }
 
     public void Exit()

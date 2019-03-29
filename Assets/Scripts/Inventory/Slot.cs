@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class Slot : MonoBehaviour, IDropHandler
 {
     public static Slot instance;
-    private ArrayList CurrentItems = new ArrayList();  //store GameObjects to delete or update
-
+    
     private void Start()
     {
         instance = this;
@@ -26,15 +25,12 @@ public class Slot : MonoBehaviour, IDropHandler
         }
     }
 
-    
-
-    //adding an item in an empty slot
+    //adding an item in an empty slot 
     public void AddItem(GameObject prefab)
     {
-        Instantiate(prefab, transform);
-        CurrentItems.Add(prefab);  //adding the prefab to store in the array
         prefab.GetComponent<Image>().sprite = prefab.GetComponent<PrefabData>().artWork;
-       
+        GameObject newItem = Instantiate(prefab, transform) as GameObject;
+        Inventory.instance.AddCurrentItem(newItem); 
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -43,6 +39,7 @@ public class Slot : MonoBehaviour, IDropHandler
        if(!item)
        {
             DragHandler.itemBeingDragged.transform.SetParent(transform);
+            ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
        }
     }
 }

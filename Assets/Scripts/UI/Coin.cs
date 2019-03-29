@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour
     
     private void Start()
     {
-        score = 10;
+        score = 40;
         scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
     }
 

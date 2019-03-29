@@ -156,11 +156,7 @@ public class EnemyController : MonoBehaviour
             if (Time.time - latestDirectionChangeTime > directionChangeTime)
             {
                 calcuateNewMovementVector(); //calculating random movement
-
-                print("often");
-                print(latestDirectionChangeTime);
-                print(directionChangeTime);
-                print(Time.time);
+      
                 latestDirectionChangeTime = Time.time;
             }
             //move enemy: 
@@ -180,7 +176,7 @@ public class EnemyController : MonoBehaviour
                 if (B_FacingRight)
                 {
                    Flip();
-                    print("Facing left");
+
                 }
                      
             //Update lastXVal
@@ -195,7 +191,6 @@ public class EnemyController : MonoBehaviour
                 if (!B_FacingRight)
                 {
                     Flip();
-                    print("Facing right");
                 }
 
                 //facing right

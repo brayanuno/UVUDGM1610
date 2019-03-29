@@ -22,6 +22,7 @@ public class HealthBar : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateHealth();
+        username.text = playerInfo.username;
         //checking if restart stats is allow
         if (!playerInfo.restartStats)
         {
@@ -29,7 +30,6 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
-            username.text = playerInfo.username;
             hitpoint = playerInfo.hitPoint;
             maxHitpoint = playerInfo.hitPoint;
         }
@@ -78,5 +78,20 @@ public class HealthBar : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         HealthDisplayCanvas.SetActive(false);
      }
+
+     //public void increaseMaxHitpoint(int hitPoint,bool active)
+     //{
+        //if(active)
+        ///{
+        
+        ////    maxHitpoint += hitPoint;
+        /////}
+        //else
+        ///{
+            
+        ////    maxHitpoint -= hitPoint;   
+       //// }
+    
+     ///}
 }
     

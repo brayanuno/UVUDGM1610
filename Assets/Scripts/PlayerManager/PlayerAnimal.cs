@@ -12,8 +12,6 @@ public class PlayerAnimal : MonoBehaviour
     [SerializeField] private InGameCharacter inGameCharacter;
     [SerializeField] private PlayerInfo playerInfo;
 
-    public Inventory inventory;
-
     public float playerSpeed;
     public float jumpHeight;
 
@@ -29,7 +27,6 @@ public class PlayerAnimal : MonoBehaviour
         playerBehaviour = GetComponent<PlayerBehaviour>();
         rb = GetComponent<Rigidbody2D>();
         powerUps = GameObject.Find("GamePlayManager").GetComponent<PowerUps>();  
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         move = true;
         jump = true;
     }
@@ -56,11 +53,26 @@ public class PlayerAnimal : MonoBehaviour
                 Jump();
               
                 jump = false;   
-            }
-         
+            }     
         }
+
+        //ACTIVE STORE AND DESACTIVE
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            print("workingkey");
+            Store.instance.GetComponent<Store>().OpenStore();//call the store to activate
+            //Inventory.instance.GetComponent<Inventory>().Exit();
+        }
+        //ACTIVE STORE AND DESACTIVE
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            
+            Inventory.instance.OpenInventory(); //call the store to activate
+            //Store.instance.GetComponent<Store>().Exit();
+        }
+
         //MOVING LEFT
-        if(Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A)) {
             
                 MovingLeft();
         }
@@ -107,18 +119,6 @@ public class PlayerAnimal : MonoBehaviour
         {
             powerUps.PowerUp(2);
         }
-
-        //ACTIVE STORE AND DESACTIVE
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Store.instance.OpenStore();//call the store to activate
-        }
-        //ACTIVE STORE AND DESACTIVE
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            inventory.OpenInventory(); //call the store to activate
-        }
-
     }
 
     //when player touch the ground or the enemy
@@ -133,9 +133,9 @@ public class PlayerAnimal : MonoBehaviour
     //calling when player falls below 0 hp
     public void Die()
     {
-            animator.Play("Die");
-            Destroy(this);
-            Destroy(GameObject.Find("Canvas"));
+            //animator.Play("Die");
+           // Destroy(this);
+            //Destroy(GameObject.Find("Canvas"));
     }
 
     public void Jump()
@@ -162,11 +162,6 @@ public class PlayerAnimal : MonoBehaviour
         }
     }
 
-    //display when player is dead
-    private void OnDisable()
-    {
-
-    }
 
     //flipping the character to the direction
     private void Flip()

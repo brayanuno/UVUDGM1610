@@ -8,7 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator animator;
     private EnemyController enemyController; //store the instance of enemy controller
     private float radarPlayer; //the radar range  15
-    private Transform[] transArray;
+    private Transform[] transArray; //stores all enemies data 
 
     private float lastAttackTime;  //Record the time we attacked
     public float attackDelay;  //seconds to attack again 
@@ -41,28 +41,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        //storing all the enemies in the scene
-        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy"); //all the enemies in the scene
-        transArray = new Transform[Enemies.Length]; 
-
-        for (int i = 0; i < Enemies.Length; i++ )
-        {
-            transArray[i] = Enemies[i].transform;
-        }
-
+        StoringEnemies();
         AttackingEnemies();
         BeingHitted();
         animator = gameObject.transform.Find("PlayerModel").GetComponent<Animator>();
     }
 
     //getting the closest enemy and best target
-    public Transform GetClosestEnemy(Transform[] enemies)
+    public Transform GetClosestEnemy()
     {
+
         float closestDistanceSqr = Mathf.Infinity;
         Transform bestTarget = null; 
         Vector3 currentPosition = transform.position;
 
-        foreach (Transform potentialTarget in enemies)
+        foreach (Transform potentialTarget in transArray) //enemies
         {
             Vector3 directionToTarget = potentialTarget.position - currentPosition;
 
@@ -77,13 +70,25 @@ public class PlayerBehaviour : MonoBehaviour
         return bestTarget;
     }
 
+    public void StoringEnemies()
+    {
+        //storing all the enemies in the scene
+        GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy"); //all the enemies in the scene
+        transArray = new Transform[Enemies.Length];
+
+        for (int i = 0; i < Enemies.Length; i++)
+        {
+            transArray[i] = Enemies[i].transform;
+        }
+    }
+
     //Attacking Enemies
     public void AttackingEnemies()
     {
         //get closest enemy distance with the best target and close enemy
-        float distance = Vector3.Distance(transform.position, GetClosestEnemy(transArray).transform.position);
+        float distance = Vector3.Distance(transform.position, GetClosestEnemy().transform.position);
         //name of the best target enemy
-        string bestTargetName = GetClosestEnemy(transArray).transform.name;
+        string bestTargetName = GetClosestEnemy().transform.name;
 
         //if the player is close to the radar range
         if (distance < radarPlayer)
@@ -99,7 +104,7 @@ public class PlayerBehaviour : MonoBehaviour
                 {
 
                     //reducing damage to the enemy
-                    enemyController = GetClosestEnemy(transArray).GetComponent<EnemyController>();
+                    enemyController = GetClosestEnemy().GetComponent<EnemyController>();
                     enemyController.ReceivingDamage(playerDamage);
                     enemyController.receivingDamage = true;
 
@@ -113,6 +118,7 @@ public class PlayerBehaviour : MonoBehaviour
             PanelControls.instance.DesactivatePanel(PanelControls.instance.AlertPanel);
         }
     }
+
 
     public bool isPlaying(Animator anim, string stateName)
     {
@@ -135,7 +141,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(gameObject.GetComponent<Collider2D>().enabled == true)
         {
             // == enemy
-            if (collision.gameObject.transform.name == GetClosestEnemy(transArray).transform.name)
+            if (collision.gameObject.transform.name == GetClosestEnemy().transform.name)
             {
                 isEnemyClose = true;
             }
@@ -159,7 +165,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public GameObject ClosestEnemyObject()
     {
-        return GetClosestEnemy(transArray).gameObject;
+        return GetClosestEnemy().gameObject;
     }
+
+    
 }
 

@@ -17,6 +17,7 @@ TagManager:
   - Inventory
   - Panel2
   - Store
+  - SelectedImage
   layers:
   - Default
   - TransparentFX
