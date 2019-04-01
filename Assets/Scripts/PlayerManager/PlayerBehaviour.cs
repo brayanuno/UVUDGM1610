@@ -22,7 +22,6 @@ public class PlayerBehaviour : MonoBehaviour
         playerInfo = PlayerInfo.instance;
         attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         playerDamage = playerInfo.playerDamage;
-        
     }
 
     private void FixedUpdate()
@@ -96,24 +95,14 @@ public class PlayerBehaviour : MonoBehaviour
             //calling the PanelControl to active the alert of an enemy 
             PanelControls.instance.ActivatePanel(PanelControls.instance.AlertPanel,bestTargetName + " is close");
 
-            //if the player is close to the attack range
-            if (isEnemyClose == true)
-            {
-                //check if the enough attack delay passed to attack again and the animation is running
-                if (Time.time > lastAttackTime + attackDelay && isPlaying(animator, "Attack") && isEnemyClose )
+            //check if the enough attack delay passed to attack again and the animation is running
+                if (Time.time > lastAttackTime + attackDelay && isPlaying(animator, "Attack") && isEnemyClose)
                 {
-
+                    lastAttackTime = Time.time;
                     //reducing damage to the enemy
                     enemyController = GetClosestEnemy().GetComponent<EnemyController>();
                     enemyController.ReceivingDamage(playerDamage);
-                    enemyController.receivingDamage = true;
-
-
-                  //Record the time we attacked
-                  lastAttackTime = Time.time;
-                }
             }
-
         } else { 
             PanelControls.instance.DesactivatePanel(PanelControls.instance.AlertPanel);
         }
@@ -129,36 +118,14 @@ public class PlayerBehaviour : MonoBehaviour
             return false;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radarPlayer);
-    }
-
-    //if player is in collision
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(gameObject.GetComponent<Collider2D>().enabled == true)
-        {
-            // == enemy
-            if (collision.gameObject.transform.name == GetClosestEnemy().transform.name)
-            {
-                isEnemyClose = true;
-            }
-            else
-            {
-                isEnemyClose = false;
-            }
-        } 
-    }
-
-
-
     private void BeingHitted()
     {
         if (receivingDamage)
         {
+            GameObject someCoolPrefab = Instantiate(Resources.Load("Prefabs/BloodSplash") as GameObject, transform);
             animator.SetTrigger("Hit");
+            print("worked");
+            Destroy(someCoolPrefab,1f);
             receivingDamage = false;
         } 
     }

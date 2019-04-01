@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private int score;
+    private int scoreCoin;
     private ScoreManager scoreManager;
-    
     
     private void Start()
     {
-        score = 40;
+        scoreCoin = 40;
         scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.transform.tag == "Player")
+        if(col.transform.tag == "coin")
         {
-            scoreManager.UpdateScore(score);
-            Destroy(gameObject);
+            scoreManager.UpdateScore(scoreCoin);
+            Destroy(col.gameObject);
+            print("colliding and collecting coins");
         }
         
     }

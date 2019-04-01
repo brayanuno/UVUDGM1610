@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] GameObject BloodSplash;
     private float radarRange = 10f;
     private float AttackRange = 2f;
     public int damage = 10;
     public float enemySpeed;
     private float lastAttackTime;
     private float attackDelay = 3f; //seconds to attack again
-    private float stopRange = 1.8f;
+    public float stopRange = 1.8f;
 
     private bool B_FacingRight = true;
 
@@ -32,6 +33,9 @@ public class EnemyController : MonoBehaviour
     private Vector2 movementPerSecond; //this changes every change time
     private bool isEnemyClose; //is enemy close?
 
+    private Vector3 lastPos;
+    private bool enemyMov;
+
     public bool receivingDamage;
     public bool move; //the enemy can move
     
@@ -47,14 +51,13 @@ public class EnemyController : MonoBehaviour
         directionChangeTime = 3f;
         latestDirectionChangeTime = 0f;
         isEnemyClose = false;
-        //calcuateNewMovementVector(); //initialize with new movement ai the enemy
+        lastPos = transform.position;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
         target = PlayerManager.instance.player.transform; //the target is the player
         lastXVal = transform.position.x; //storing the x value
@@ -66,8 +69,6 @@ public class EnemyController : MonoBehaviour
                 MoveEnemy();
         }
 
-        //checking the changing transform in every frame
-        BeingHitted();
         UpdateHealth();
 
         float distance = Vector3.Distance(transform.position, target.transform.position);
@@ -86,21 +87,18 @@ public class EnemyController : MonoBehaviour
                     animator.SetTrigger("Attack");
                     //atacking only the player
                     healthBar.TakeDamage(damage);
-
                     //animating the enemy character(player)
                     PlayerManager.instance.player.GetComponent<PlayerBehaviour>().receivingDamage = true;
-
                     //Record the time we attacked
                     lastAttackTime = Time.time;
 
                 }
-                else { PlayerManager.instance.player.GetComponent<PlayerBehaviour>().receivingDamage = false; }
+                else { } //PlayerManager.instance.player.GetComponent<PlayerBehaviour>().receivingDamage = false;} }
 
                 if (distance < stopRange) //stop the movement
                 {
                     move = false;
                 }
-
             }
             else
             {
@@ -112,12 +110,8 @@ public class EnemyController : MonoBehaviour
             isEnemyClose = false;
             move = true; //move enemy is not close
         }
-
-        //changin to run and idle animations
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
-            animator.SetFloat("MoveSpeed", 0.6f); //running
-        else
-            animator.SetFloat("MoveSpeed", 0f); //idle
+        EnemyMoved();
+        //BeingHitted();
         CheckingDirection();
     }
 
@@ -143,7 +137,6 @@ public class EnemyController : MonoBehaviour
     {
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
         movementDirection = new Vector2(Random.Range(-2f, 2f), 0);
-        
         //new movement iwth fixed speed
         movementPerSecond = movementDirection * enemySpeed;
    
@@ -161,7 +154,6 @@ public class EnemyController : MonoBehaviour
             }
             //move enemy: 
             transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
-
             transform.position.y + (movementPerSecond.y * Time.deltaTime)); //dont do anything with y movement
     }
 
@@ -200,7 +192,6 @@ public class EnemyController : MonoBehaviour
             }
         }
         transform.hasChanged = false;
-        
     }
 
     //flipping the character to the direction
@@ -215,6 +206,9 @@ public class EnemyController : MonoBehaviour
     public void ReceivingDamage(int Damage)
     {
         enemyHitPoint -= Damage;
+        animator.SetTrigger("Hit");
+        BeingHitted();
+        print("receiving damage");
     }
 
     private void Die()
@@ -222,16 +216,11 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-
     public void BeingHitted()
     {
-        if (receivingDamage)
-        {
-            animator.SetTrigger("Hit");
-            receivingDamage = false;
-        }
+        GameObject prefab = Instantiate(BloodSplash,transform);
+        Destroy(prefab,1f);
     }
-
     //updating health and healthbar
     private void UpdateHealth()
     {
@@ -251,4 +240,20 @@ public class EnemyController : MonoBehaviour
             enemyHitPoint = maxEnemyHitpoint;
         }
     }
+    private void EnemyMoved()
+    {
+        Vector3 displacement = transform.position - lastPos;
+        lastPos = transform.position;
+        if (displacement.magnitude > 0.001)  // return true if char moved 1mm
+        {
+            animator.SetFloat("MoveSpeed", 1f); //running
+            //print("running");
+        }
+        else
+        {
+            animator.SetFloat("MoveSpeed", 0f); //idle
+           // print("idle");
+        }
+    }
+   
 }

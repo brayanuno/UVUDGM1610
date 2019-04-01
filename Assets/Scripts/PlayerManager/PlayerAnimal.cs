@@ -41,6 +41,7 @@ public class PlayerAnimal : MonoBehaviour
             jumpHeight = playerInfo.jumpHeight;
             playerSpeed = playerInfo.speedPlayer;
          }
+      
     }
 
     void Update()
@@ -54,6 +55,18 @@ public class PlayerAnimal : MonoBehaviour
               
                 jump = false;   
             }     
+        }
+        //MOVING LEFT
+        if (Input.GetKey(KeyCode.A))
+        {
+
+            MovingLeft();
+        }
+
+        //MOVING RIGHT
+        if (Input.GetKey(KeyCode.D))
+        {
+            MovingRight();
         }
 
         //ACTIVE STORE AND DESACTIVE
@@ -69,18 +82,6 @@ public class PlayerAnimal : MonoBehaviour
             
             Inventory.instance.OpenInventory(); //call the store to activate
             //Store.instance.GetComponent<Store>().Exit();
-        }
-
-        //MOVING LEFT
-        if (Input.GetKey(KeyCode.A)) {
-            
-                MovingLeft();
-        }
-
-        //MOVING RIGHT
-        if (Input.GetKey(KeyCode.D))
-        {
-                MovingRight();
         }
 
         //USE RIGHT CLICK
@@ -109,13 +110,13 @@ public class PlayerAnimal : MonoBehaviour
         }
 
         //USING SECOND POWERUP
-        if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
             powerUps.PowerUp(1);
         }
 
         //USING THIRD POWERUP
-        if (Input.GetKeyDown(KeyCode.C))
+        else if (Input.GetKeyDown(KeyCode.C))
         {
             powerUps.PowerUp(2);
         }
@@ -146,7 +147,7 @@ public class PlayerAnimal : MonoBehaviour
     public void MovingRight()
     {
         transform.Translate(playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run right
-
+        //rb.AddForce(Vector2.right * playerSpeed * Time.deltaTime);
         if (!B_FacingRight)
         {
             Flip();
@@ -154,15 +155,14 @@ public class PlayerAnimal : MonoBehaviour
     }
     public void MovingLeft()
     {
-        
         transform.Translate(-playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run left
+        //rb.AddForce(-Vector2.right * playerSpeed * Time.deltaTime);
         if (B_FacingRight)
         {
             Flip();
         }
     }
-
-
+    
     //flipping the character to the direction
     private void Flip()
     {

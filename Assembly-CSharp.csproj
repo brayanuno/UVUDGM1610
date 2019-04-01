@@ -71,6 +71,8 @@
     <Compile Include="Assets\PracticeScripts\GenericPickUp.cs" />
     <Compile Include="Assets\PracticeScripts\Switches.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Enemies Ai\Lavatrap.cs" />
+    <Compile Include="Assets\Scripts\Enemies Ai\Trap.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\MovingPlattform.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\PowerUps.cs" />
@@ -84,7 +86,9 @@
     <Compile Include="Assets\Scripts\MainScene\CreateClassSystem.cs" />
     <Compile Include="Assets\Scripts\MainScene\InGameCharacter.cs" />
     <Compile Include="Assets\Scripts\MainScene\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\ColliderWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerManager\Functions.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\LegCollider.cs" />
     <Compile Include="Assets\Scripts\PlayerManager\PlayerAnimal.cs" />
     <Compile Include="Assets\Scripts\PlayerManager\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerManager\PlayerInfo.cs" />
