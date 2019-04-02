@@ -70,6 +70,7 @@
     <Compile Include="Assets\PracticeScripts\ArrayListDict.cs" />
     <Compile Include="Assets\PracticeScripts\GenericPickUp.cs" />
     <Compile Include="Assets\PracticeScripts\Switches.cs" />
+    <Compile Include="Assets\Scripts\Enemies Ai\ArrowEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\Lavatrap.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\Trap.cs" />

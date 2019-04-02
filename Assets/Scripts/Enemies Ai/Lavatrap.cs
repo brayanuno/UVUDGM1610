@@ -11,12 +11,15 @@ public class Lavatrap : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //everyTwoSeconds if is indexer the lava cause damage
-        if ((Time.time - SavedTime) > DelayTime)
+        if(other.transform.tag == "Player")
         {
-            SavedTime = Time.time;
-            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint -= lavaDmaage;
-            print("is in lava");
+            //everyTwoSeconds if is indexer the lava cause damage
+            if ((Time.time - SavedTime) > DelayTime)
+            {
+                SavedTime = Time.time;
+                GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint -= lavaDmaage;
+                print("is in lava");
+            }
         }
 
     }

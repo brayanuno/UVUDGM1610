@@ -55,7 +55,7 @@ public class PowerUps : MonoBehaviour
         {
             //power is done  to user
             powerAvailable[0] = true;
-                imagesOnReady[0].SetActive(true);
+            imagesOnReady[0].SetActive(true);
         }
 
         //power is loading
@@ -125,6 +125,7 @@ public class PowerUps : MonoBehaviour
 
     //increase the buffs in everySkill by seconds
     public IEnumerator PowerTimer(int index, float behavior,int seconds)
+        //first skill
     {   if (index == 0)
         {  
             yield return new WaitForSeconds(seconds);
@@ -134,12 +135,13 @@ public class PowerUps : MonoBehaviour
             powerAvailable[0] = false;
             currentFirstPower = 0; //reseting to load again the skill
         }
-
+        //seconds skill
         if(index == 1)
         {
             yield return new WaitForSeconds(seconds);
             PanelControls.instance.DesactivatePanel(PanelControls.instance.AlertSkills[2]); //Desactivating the panels
             PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage = (int)behavior;
+            thirdPowerActivated = false;
             powerAvailable[2] = false;
             currentThirdPower = 0; //reseting to load again the skill
         }
@@ -151,7 +153,7 @@ public class PowerUps : MonoBehaviour
         if (firstPowerActivated)
         {
             GameObject.Find("FirstPower").transform.Find("Delay").gameObject.SetActive(true);
-            delayFirstPower += 100/firstSkillDuration * Time.deltaTime; // 100/ duration of the first skill
+            delayFirstPower += 100/firstSkillDuration * Time.deltaTime; //Duration of the first skill
             GameObject.Find("FirstPower").transform.Find("Delay").GetComponent<Image>().fillAmount = delayFirstPower / 100;
         }
         else
@@ -163,7 +165,7 @@ public class PowerUps : MonoBehaviour
         if (thirdPowerActivated)
         {
             GameObject.Find("ThirdPower").transform.Find("Delay").gameObject.SetActive(true);
-            delayThirdPower += 100/thirdSillDuration * Time.deltaTime; // 100/ duration of the third skill
+            delayThirdPower += 100/thirdSillDuration * Time.deltaTime; // Duration of the third skill
             GameObject.Find("ThirdPower").transform.Find("Delay").GetComponent<Image>().fillAmount = delayThirdPower / 100;
         }
         else

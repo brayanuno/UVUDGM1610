@@ -18,6 +18,7 @@ TagManager:
   - Panel2
   - Store
   - SelectedImage
+  - InvisibleWall
   layers:
   - Default
   - TransparentFX
