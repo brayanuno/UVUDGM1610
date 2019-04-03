@@ -68,6 +68,7 @@
     <Compile Include="Assets\Free_Pack\Demo_GameResource\Script\WoodDoll_Mgr.cs" />
     <Compile Include="Assets\Mercenary_Pack\Mercenary_GM.cs" />
     <Compile Include="Assets\PracticeScripts\ArrayListDict.cs" />
+    <Compile Include="Assets\PracticeScripts\Dictionaries.cs" />
     <Compile Include="Assets\PracticeScripts\GenericPickUp.cs" />
     <Compile Include="Assets\PracticeScripts\Switches.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\ArrowEnemy.cs" />
