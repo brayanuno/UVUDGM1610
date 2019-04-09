@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class Lavatrap : MonoBehaviour
 {
-    private float SavedTime = 0;
-    private float DelayTime = 2;
-    private int lavaDmaage = 10;
+    private float savedTime;
+    private float delayTime;
+    private int lavaDamage;
 
-
-    void OnTriggerStay2D(Collider2D other)
+    private void Start()
     {
-        if(other.transform.tag == "Player")
+        savedTime = 0f;
+        delayTime = 2f;
+        lavaDamage = 40;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.transform.tag == "Player")
         {
-            //everyTwoSeconds if is indexer the lava cause damage
-            if ((Time.time - SavedTime) > DelayTime)
+            print("the player touch the lava");
+            //everyTwoSeconds if is the player is in the  the lava cause damage
+            if ((Time.time - savedTime) > delayTime)
             {
-                SavedTime = Time.time;
-                GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint -= lavaDmaage;
-                print("is in lava");
+                savedTime = Time.time;
+                GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint -= lavaDamage;
             }
         }
 

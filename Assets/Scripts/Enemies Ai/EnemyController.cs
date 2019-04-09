@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     private float lastAttackTime;
     private float attackDelay = 3f; //seconds to attack again
     public float stopRange = 1.8f;
-
+    private int coinValue = 100;
     private bool B_FacingRight = true;
 
     public Image enemyhealthbar; //image health bar
@@ -70,7 +70,6 @@ public class EnemyController : MonoBehaviour
         }
 
         UpdateHealth();
-
         float distance = Vector3.Distance(transform.position, target.transform.position);
 
         //if player is close to the radius 
@@ -110,6 +109,7 @@ public class EnemyController : MonoBehaviour
             isEnemyClose = false;
             move = true; //move enemy is not close
         }
+
         EnemyMoved();
         //BeingHitted();
         CheckingDirection();
@@ -213,7 +213,10 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
+        GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>().UpdateScore(coinValue);
+
         Destroy(this.gameObject);
+        
     }
 
     public void BeingHitted()
