@@ -2059,6 +2059,7 @@ Transform:
   - {fileID: 3140585583581926906}
   - {fileID: 5167619424425696409}
   - {fileID: 2115050762}
+  - {fileID: 16249759296323262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2117,6 +2118,7 @@ MonoBehaviour:
   playerDamage: 0
   receivingDamage: 0
   isEnemyClose: 0
+  FirePoint: {fileID: 16249759296323262}
 --- !u!1 &3206452212566134727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,8 +2526,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4427572852926139796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2}
+  m_LocalRotation: {x: -4.5976767e-10, y: 7.385181e-11, z: -0, w: 1}
+  m_LocalPosition: {x: 0.039, y: 0.081, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4825579184327624848}
@@ -3851,6 +3853,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8337057333036401906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 16249759296323262}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &16249759296323262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337057333036401906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.12, y: 1.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500098349766605809}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8341085275413892718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +3971,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5167619424425696409}
-  - component: {fileID: 90231900556013139}
   - component: {fileID: 276821140581341739}
   m_Layer: 0
   m_Name: LegCollider
@@ -3962,18 +3993,6 @@ Transform:
   m_Father: {fileID: 1500098349766605809}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &90231900556013139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8680927384528084506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365a7f58dcc96d247840167f7c6d6d37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &276821140581341739
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
     [SerializeField] GameObject changeUsername;
     [SerializeField] InputField username;
     [SerializeField] Button usernameButton;
+    private bool isOpen;
 
     private int maxHealth;
     private int oldMaxHealth;
@@ -23,12 +24,10 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
     private float maxJump;
     private float oldMaxJump;
 
-    private bool isOpen;
-
-    private int healthIncrease; 
-    private float speedIncrease;
-    private int damageIncrease;
-    private float jumpIncrease;
+    private bool healthinSlot;
+    private bool damageinSlot;
+    private bool speedinSlot;
+    private bool jumpinSlot;
 
     private bool once = false;
 
@@ -37,6 +36,10 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
         instance = this;
         gameObject.SetActive(false);
         changeUsername.SetActive(false);
+        healthinSlot = false;
+        damageinSlot = false;
+        speedinSlot = false;
+        jumpinSlot = false;
     }
     void Update()
     {
@@ -49,7 +52,8 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
 
     //check if new objects are being in the correct place to increase the player stats or not
     public void HasChanged() {
-        if (transform.childCount > 0) 
+        if (slots.transform.childCount > 0)
+        {
             //give buff to the player when item is in the slot
             foreach (Transform SlotsTransform in slots)
             {
@@ -58,69 +62,86 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
                     //activate fisrt skill maxHitPoint (item id = 0)
                     if (item.GetComponent<PrefabData>().id == 0)
                     {
-                        healthIncrease = 50;
-                        maxHealth = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint + healthIncrease;
-                        oldMaxHealth = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint;
-                        GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint = maxHealth;
-                        maxHealth = 0;
+                        if(!healthinSlot)
+                        {
+                            int healthIncrease = 50;
+                            maxHealth = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint + healthIncrease;
+                            oldMaxHealth = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint;
+                            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint = maxHealth;
+                            maxHealth = 0;
+                            healthinSlot = true;
+                        }
                     }
                     //activate second skill SpeedIncrease (item id = 1)
                     else if (item.GetComponent<PrefabData>().id == 1)
                     {
-                        maxSpeed = 2;
-                        maxSpeed = PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed + speedIncrease;
-                        oldMaxSpeeed = PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed;
-                        PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed = maxSpeed;
-                        maxSpeed = 0;
+                        if (!speedinSlot)
+                        {
+                            int speedIncrease = 2;
+                            maxSpeed = PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed + speedIncrease;
+                            oldMaxSpeeed = PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed;
+                            PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed = maxSpeed;
+                            maxSpeed = 0;
+                            speedinSlot = true;
+                        }
                     }
                     //activate third skill SpeedIncrease (item id = 0)
                     else if (item.GetComponent<PrefabData>().id == 2)
                     {
-                        damageIncrease = 3;
-                        maxDamage = PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage + damageIncrease;
-                        oldMaxDamage = PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage;
-                        PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage = maxDamage;
-                        maxDamage = 0;
-                    }
-                    else if (item.GetComponent<PrefabData>().id == 3)
-                    {
-                       
+                        if(!damageinSlot)
+                        {
+                            int damageIncrease = 3;
+                            maxDamage = PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage + damageIncrease;
+                            oldMaxDamage = PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage;
+                            PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage = maxDamage;
+                            maxDamage = 0;
+                            damageinSlot = true;
+                        }
                     }
                     //activate third skill SpeedIncrease (item id = 5)
                     else if (item.GetComponent<PrefabData>().id == 5)
                     {
-                        jumpIncrease = 1f;
-                        maxJump = PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight + jumpIncrease;
-                        oldMaxJump = PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight;
-                        PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight = maxJump;
-                        maxJump = 0;
+                        if (!damageinSlot)
+                        {
+                            float jumpIncrease = 1f;
+                            maxJump = PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight + jumpIncrease;
+                            oldMaxJump = PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight;
+                            PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight = maxJump;
+                            maxJump = 0;
+                            jumpinSlot = true;
+                        }
                     }
             }
-            //reset the item to dont give buff in the player if the item is in the slotDown
-            foreach (Transform SlotsTransformDown in slotsDown)
-            {
-                GameObject itemDown = SlotsTransformDown.GetComponent<Slot>().item;
-                if (itemDown)
-                    if (itemDown.GetComponent<PrefabData>().id == 0)
-                    {
-                        GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint = oldMaxHealth;
-                    }
+        }
+        //reset the item to dont give buff in the player if the item is in the slotDown
+        foreach (Transform SlotsTransformDown in slotsDown)
+        {
+            GameObject itemDown = SlotsTransformDown.GetComponent<Slot>().item;
+            if (itemDown)
+                if (itemDown.GetComponent<PrefabData>().id == 0)
+                {
+                    GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().maxHitpoint = oldMaxHealth;
+                    healthinSlot = false;
+                }
 
-                    else if(itemDown.GetComponent<PrefabData>().id == 1)
-                    {
-                        PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed = oldMaxSpeeed;
-                    }
+                else if (itemDown.GetComponent<PrefabData>().id == 1)
+                {
+                    PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed = oldMaxSpeeed;
+                    speedinSlot = false;
+                }
 
-                    else if (itemDown.GetComponent<PrefabData>().id == 2)
-                    {
-                        PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage = oldMaxDamage;
-                    }
-                    
-                    else if (itemDown.GetComponent<PrefabData>().id == 5)
-                    {
-                        PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight = oldMaxJump;
-                    }
-                    
+                else if (itemDown.GetComponent<PrefabData>().id == 2)
+                {
+                    PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage = oldMaxDamage;
+                    damageinSlot = false;
+                }
+
+                else if (itemDown.GetComponent<PrefabData>().id == 5)
+                {
+                    PlayerManager.instance.player.GetComponent<PlayerAnimal>().jumpHeight = oldMaxJump;
+                    jumpinSlot = false;
+                }
+
         }
     }
 
@@ -168,9 +189,8 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
         GameObject result = null;
         for (int i = 0; i < currentItems.Count; i++)
         {
-            if (currentItems[i].GetComponent<PrefabData>().id == 3)
+            if (currentItems[i].GetComponent<PrefabData>().id == ID)
             {
-                print("got it");
                 result = currentItems[i];
                 break;
             }
@@ -181,7 +201,6 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
     public void AddCurrentItem(GameObject obj)
     {
         currentItems.Add(obj);
-        print("added");
     }
 
     public void UsernameExit()
@@ -189,7 +208,6 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
         Destroy(FindObjectByID(3));
         PlayerInfo.instance.username = username.text;
         changeUsername.SetActive(false);
-        print("working");
         print(FindObjectByID(3));
     }
 
@@ -197,6 +215,7 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
     {
         Destroy(PlayerManager.instance.player.GetComponent<PlayerBehaviour>().ClosestEnemyObject());
     }
+    
 
     public void Exit()
     {

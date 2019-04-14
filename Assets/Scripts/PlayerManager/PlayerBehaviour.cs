@@ -16,12 +16,19 @@ public class PlayerBehaviour : MonoBehaviour
     public int playerDamage;
     public bool receivingDamage; //the enemy is beign hiite run animation
     public bool isEnemyClose;  //the enemy is close?
+    
+
+    //playerShooting
+    public Transform FirePoint;
+    public bool rangeDelay;
 
     void Start()
     {
+        //FirePoint = transform.Find("FirePoint").transform;
         playerInfo = PlayerInfo.instance;
         attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         playerDamage = playerInfo.playerDamage;
+        rangeDelay = true;
     }
 
     private void FixedUpdate()
@@ -122,9 +129,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (receivingDamage)
         {
-            GameObject someCoolPrefab = Instantiate(Resources.Load("Prefabs/BloodSplash") as GameObject, transform);
+            GameObject someCoolPrefab = Instantiate(Resources.Load("Prefabs/BloodSplash") as GameObject, FirePoint);
             animator.SetTrigger("Hit");
-            print("worked");
             Destroy(someCoolPrefab,1f);
             receivingDamage = false;
         } 
@@ -135,6 +141,14 @@ public class PlayerBehaviour : MonoBehaviour
         return GetClosestEnemy().gameObject;
     }
 
+    public IEnumerator Shooting()
+    {
+        GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, FirePoint.position, Quaternion.identity);
+        rangeDelay = false;
+        yield return new WaitForSeconds(2.5f);
+        rangeDelay = true;
+
+    } 
     
 }
 

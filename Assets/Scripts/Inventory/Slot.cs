@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Slot : MonoBehaviour, IDropHandler
 {
     public static Slot instance;
-    
     private void Start()
     {
         instance = this;
@@ -24,6 +23,8 @@ public class Slot : MonoBehaviour, IDropHandler
             return null;
         }
     }
+    
+
 
     //adding an item in an empty slot 
     public void AddItem(GameObject prefab)

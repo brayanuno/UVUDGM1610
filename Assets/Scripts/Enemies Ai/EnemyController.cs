@@ -111,7 +111,6 @@ public class EnemyController : MonoBehaviour
         }
 
         EnemyMoved();
-        //BeingHitted();
         CheckingDirection();
     }
 

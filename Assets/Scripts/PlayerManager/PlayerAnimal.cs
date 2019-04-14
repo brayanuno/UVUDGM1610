@@ -69,25 +69,24 @@ public class PlayerAnimal : MonoBehaviour
             MovingRight();
         }
 
-        //ACTIVE STORE AND DESACTIVE
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            print("workingkey");
             Store.instance.GetComponent<Store>().OpenStore();//call the store to activate
-            //Inventory.instance.GetComponent<Inventory>().Exit();
+           
         }
         //ACTIVE STORE AND DESACTIVE
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            
-            Inventory.instance.OpenInventory(); //call the store to activate
-            //Store.instance.GetComponent<Store>().Exit();
+            Inventory.instance.GetComponent<Inventory>().OpenInventory(); 
+          
         }
 
-        //USE RIGHT CLICK
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        //USE RIGHT CLICK TO CLICK ATTACK 2
+        if (Input.GetKeyDown(KeyCode.Mouse1) && playerBehaviour.rangeDelay == true)
         {
-            //animator.SetTrigger("Attack2");
+            animator.SetTrigger("Attack2");
+            StartCoroutine(playerBehaviour.Shooting());
         }
 
         //USE LEFT CLICK TO ATTACK

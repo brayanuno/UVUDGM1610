@@ -53,6 +53,7 @@ public class Trap : MonoBehaviour
         if(col.transform.tag == "Player")
         {
             GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint -= trapDamage;
+            Destroy(this.gameObject);
         }
     }
 }

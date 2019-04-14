@@ -7,11 +7,12 @@ public class HealthBar : MonoBehaviour
 {
     private PlayerInfo playerInfo; 
     public Image healthBar;
-    public Text ratioText;
     public GameObject HealthDisplayCanvas;
     private Text username;
     public int hitpoint;
     public int maxHitpoint;
+
+    [SerializeField]private Text hitPoint;
 
     private void Start()
     {
@@ -33,14 +34,13 @@ public class HealthBar : MonoBehaviour
             hitpoint = playerInfo.hitPoint;
             maxHitpoint = playerInfo.hitPoint;
         }
+
     }
 
     void Update()
     { 
         HealthDisplayCanvas = PlayerManager.instance.player.transform.Find("HealthDisplayCanvas").gameObject;
-        //hitpoint -= Time.deltaTime * decreasePerMinute / 5f;
-        UpdateHealth();
-
+        hitPoint.text = hitpoint + "/" + maxHitpoint;
     }
 
     //updating the health everyframe
@@ -48,7 +48,7 @@ public class HealthBar : MonoBehaviour
      {
          float ratio = (float)hitpoint / maxHitpoint;
          healthBar.rectTransform.localScale = new Vector3(ratio, 1, 1); //scaling the health bar
-         ratioText.text = (ratio * 100).ToString("0") + "%";
+
 
          //if player has below 0 hp
          if (hitpoint <= 0 && !playerInfo.restartStats)

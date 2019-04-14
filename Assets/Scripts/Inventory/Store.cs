@@ -15,6 +15,8 @@ public class Store : MonoBehaviour
     public GameObject prefab;
     private bool buyOnce = false;
     private bool isOpen = false;
+
+    [SerializeField] private Button[] buttons;
     
 
     // Start is called before the first frame update
@@ -40,7 +42,7 @@ public class Store : MonoBehaviour
                 if (buyOnce)
                 {
                     GameObject prefabNew = prefab;
-                    PriceItem(index);
+                   
                     if (PriceItem(index))
                     {
                         SlotsTransform.GetComponent<Slot>().AddItem(ItemInfo(index, prefabNew)); //filling the prefab with the itemdata
@@ -56,7 +58,6 @@ public class Store : MonoBehaviour
         NoCoinsPanel.SetActive(true);
         yield return new WaitForSeconds(waitTime);
         NoCoinsPanel.SetActive(false);
-
     }
 
     private bool PriceItem(int index)
@@ -70,6 +71,7 @@ public class Store : MonoBehaviour
                     //30 <= 100
                     scoreManager.BuyScore(items[0].cost);
                     Available = true;
+                    buttons[0].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
@@ -81,6 +83,7 @@ public class Store : MonoBehaviour
                     //30 <= 100
                     scoreManager.BuyScore(items[1].cost);
                     Available = true;
+                    buttons[1].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
@@ -92,6 +95,7 @@ public class Store : MonoBehaviour
                     //30 <= 100
                     scoreManager.BuyScore(items[2].cost);
                     Available = true;
+                    buttons[2].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
@@ -103,6 +107,7 @@ public class Store : MonoBehaviour
                     //30 <= 100
                     scoreManager.BuyScore(items[3].cost);
                     Available = true;
+                    buttons[3].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
@@ -114,25 +119,26 @@ public class Store : MonoBehaviour
                     //30 <= 100
                     scoreManager.BuyScore(items[4].cost);
                     Available = true;
+                    buttons[4].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
                 }
                 break;
             case 5:
-                if (scoreManager.score >= items[0].cost)
+                if (scoreManager.score >= items[5].cost)
                 {
                     //30 <= 100
-                    scoreManager.BuyScore(items[0].cost);
+                    scoreManager.BuyScore(items[5].cost);
                     Available = true;
+                    buttons[5].interactable = false;
                 } else
                 {
                     StartCoroutine(WaitSeconds(1.5f, NoCoinsPanel));
                 }
                 break;
         }
-        return Available;
-        
+        return Available;  
     }
 
     //assigning overy prefab the to be equal to the item data info
@@ -199,7 +205,6 @@ public class Store : MonoBehaviour
 
     public void OpenStore()
     {
-        print("open");
         //activating and disable store when clicking Q
         if (isOpen)
         {
@@ -209,8 +214,13 @@ public class Store : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
+
             isOpen = true;
         }
+    }
+    public void Open()
+    {
+        gameObject.SetActive(true);
     }
 
     public void Exit()
