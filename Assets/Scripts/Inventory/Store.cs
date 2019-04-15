@@ -205,7 +205,8 @@ public class Store : MonoBehaviour
 
     public void OpenStore()
     {
-        //activating and disable store when clicking Q
+      
+     
         if (isOpen)
         {
             gameObject.SetActive(false);
@@ -213,14 +214,14 @@ public class Store : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(true);
-
+            gameObject.SetActive(true);  
             isOpen = true;
         }
-    }
-    public void Open()
-    {
-        gameObject.SetActive(true);
+
+        //if (Inventory.instance.GetComponent<Inventory>().gameObject.activeInHierarchy)
+        //
+            //Inventory.instance.GetComponent<Inventory>().Exit();
+        //}
     }
 
     public void Exit()

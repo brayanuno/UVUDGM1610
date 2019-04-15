@@ -140,7 +140,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         return GetClosestEnemy().gameObject;
     }
-
+    //Shooting
     public IEnumerator Shooting()
     {
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, FirePoint.position, Quaternion.identity);

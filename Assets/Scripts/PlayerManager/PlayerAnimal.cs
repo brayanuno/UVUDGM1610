@@ -20,6 +20,7 @@ public class PlayerAnimal : MonoBehaviour
     bool B_FacingRight = true;
     private Rigidbody2D rb;
 
+    private bool canMove;
     private void Start()
     {
         playerInfo = PlayerInfo.instance;
@@ -33,6 +34,16 @@ public class PlayerAnimal : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Inventory.instance.GetComponent<Inventory>().gameObject.activeInHierarchy ||
+               Store.instance.GetComponent<Store>().gameObject.activeInHierarchy)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+    
         if (!playerInfo.restartStats) //false
          {
             return;
@@ -41,13 +52,14 @@ public class PlayerAnimal : MonoBehaviour
             jumpHeight = playerInfo.jumpHeight;
             playerSpeed = playerInfo.speedPlayer;
          }
-      
+        
+
     }
 
     void Update()
     {
         //JUMPING
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             if(jump == true)
             {
@@ -57,65 +69,64 @@ public class PlayerAnimal : MonoBehaviour
             }     
         }
         //MOVING LEFT
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && canMove)
         {
 
             MovingLeft();
         }
 
         //MOVING RIGHT
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && canMove)
         {
             MovingRight();
         }
 
-        
+        //ACTIVE STORE AND DESACTIVE
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Store.instance.GetComponent<Store>().OpenStore();//call the store to activate
-           
+            //Store.instance.GetComponent<Store>().OpenStore();   
         }
+
         //ACTIVE STORE AND DESACTIVE
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Inventory.instance.GetComponent<Inventory>().OpenInventory(); 
-          
+            //Inventory.instance.GetComponent<Inventory>().OpenInventory(); 
         }
 
         //USE RIGHT CLICK TO CLICK ATTACK 2
-        if (Input.GetKeyDown(KeyCode.Mouse1) && playerBehaviour.rangeDelay == true)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && playerBehaviour.rangeDelay == true && canMove)
         {
             animator.SetTrigger("Attack2");
             StartCoroutine(playerBehaviour.Shooting());
         }
 
         //USE LEFT CLICK TO ATTACK
-        if (Input.GetKeyDown(KeyCode.Mouse0) )
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canMove )
         {
             animator.SetTrigger("Attack");
         }
 
         //changin to run and idle animations
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f && canMove)
             animator.SetFloat("MoveSpeed", 0.6f); //running
         else
             animator.SetFloat("MoveSpeed", 0f); //idle
 
 
         //USING FIRST POWERUP
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && canMove)
         {
             powerUps.PowerUp(0);
         }
 
         //USING SECOND POWERUP
-        else if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.X) && canMove)
         {
             powerUps.PowerUp(1);
         }
 
         //USING THIRD POWERUP
-        else if (Input.GetKeyDown(KeyCode.C))
+        else if (Input.GetKeyDown(KeyCode.C) && canMove)
         {
             powerUps.PowerUp(2);
         }
@@ -146,7 +157,6 @@ public class PlayerAnimal : MonoBehaviour
     public void MovingRight()
     {
         transform.Translate(playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run right
-        //rb.AddForce(Vector2.right * playerSpeed * Time.deltaTime);
         if (!B_FacingRight)
         {
             Flip();
@@ -155,7 +165,6 @@ public class PlayerAnimal : MonoBehaviour
     public void MovingLeft()
     {
         transform.Translate(-playerSpeed * Time.deltaTime, 0f, 0f);  //makes player run left
-        //rb.AddForce(-Vector2.right * playerSpeed * Time.deltaTime);
         if (B_FacingRight)
         {
             Flip();

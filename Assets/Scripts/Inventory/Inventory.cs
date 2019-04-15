@@ -235,6 +235,11 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
             isOpen = true;
         }
 
+        //if (Store.instance.GetComponent<Store>().gameObject.activeInHierarchy)
+        //{
+           // Store.instance.GetComponent<Store>().Exit();
+        //}
+
     }
 }
 
