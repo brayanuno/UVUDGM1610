@@ -27,4 +27,5 @@ public class ScoreManager : MonoBehaviour
     {
         this.score -= score;
     }
+    
 }

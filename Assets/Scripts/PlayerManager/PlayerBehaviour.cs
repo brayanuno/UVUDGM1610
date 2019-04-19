@@ -17,7 +17,6 @@ public class PlayerBehaviour : MonoBehaviour
     public bool receivingDamage; //the enemy is beign hiite run animation
     public bool isEnemyClose;  //the enemy is close?
     
-
     //playerShooting
     public Transform FirePoint;
     public bool rangeDelay;
@@ -146,8 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, FirePoint.position, Quaternion.identity);
         rangeDelay = false;
         yield return new WaitForSeconds(2.5f);
-        rangeDelay = true;
-
+        rangeDelay = true;S
     } 
     
 }

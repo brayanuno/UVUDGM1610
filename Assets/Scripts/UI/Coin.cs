@@ -15,11 +15,10 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.transform.tag == "coin")
+        if(col.transform.tag == "player")
         {
             scoreManager.UpdateScore(scoreCoin);
             Destroy(col.gameObject);
-            print("colliding and collecting coins");
         }
         
     }

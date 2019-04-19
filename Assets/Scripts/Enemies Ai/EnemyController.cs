@@ -54,7 +54,6 @@ public class EnemyController : MonoBehaviour
         lastPos = transform.position;
     }
 
-
     // Update is called once per frame
     void Update()
     {
