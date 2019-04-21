@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     public float enemySpeed;
     private float lastAttackTime;
     private float attackDelay = 3f; //seconds to attack again
-    public float stopRange = 1.8f;
+    public float stopRange ;///
     private int coinValue = 100;
     private bool B_FacingRight = true;
 

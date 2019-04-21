@@ -56,13 +56,13 @@ public class CreateClassSystem : MonoBehaviour
 
     public void checkingEmptyUsername()
     {
-        if (usernameInput.text == "")
-        {
-           startButton.GetComponent<Button>().interactable = false;
-        } else
-        {
-            startButton.GetComponent<Button>().interactable = true;
-        }
+            if (usernameInput.text == "")
+            {
+               startButton.GetComponent<Button>().interactable = false;
+            } else
+            {
+                startButton.GetComponent<Button>().interactable = true;
+            }
     }
 
     public void CharacterSelection () {
