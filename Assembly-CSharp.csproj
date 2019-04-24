@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Enemies Ai\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemies Ai\Trap.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\CameraController.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager\GameState.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\PowerUps.cs" />
     <Compile Include="Assets\Scripts\GameplayManager\Stats.cs" />
     <Compile Include="Assets\Scripts\Inventory\DragHandler.cs" />

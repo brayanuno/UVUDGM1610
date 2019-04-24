@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1294875766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294875767}
+  m_Layer: 0
+  m_Name: FirePointff
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294875767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294875766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.17, y: 1.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1073683373564738806}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3628874697077673
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8296330857997970199}
   - component: {fileID: 3377088925044986139}
-  - component: {fileID: 8652333238369911610}
   m_Layer: 0
   m_Name: LegCollider
   m_TagString: Untagged
@@ -89,18 +118,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9625902, y: 0.55108356}
   m_EdgeRadius: 0
---- !u!114 &8652333238369911610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31972179007915377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365a7f58dcc96d247840167f7c6d6d37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &41478757550841336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,7 +3060,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1073683373564738806}
   - component: {fileID: 8603940993456151702}
-  - component: {fileID: 5391323195311173697}
   - component: {fileID: 8703165508024073673}
   - component: {fileID: 5421886541307085451}
   m_Layer: 0
@@ -3069,6 +3085,7 @@ Transform:
   - {fileID: 5088768918547290363}
   - {fileID: 8296330857997970199}
   - {fileID: 8582415952315171292}
+  - {fileID: 1294875767}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3093,32 +3110,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 5
---- !u!61 &5391323195311173697
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6542576993204921110}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 8.111218, y: -1.0521305}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.6393948, y: 3.5446868}
-  m_EdgeRadius: 0
 --- !u!114 &8703165508024073673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3153,6 +3144,8 @@ MonoBehaviour:
   playerDamage: 0
   receivingDamage: 0
   isEnemyClose: 0
+  FirePoint: {fileID: 0}
+  rangeDelay: 0
 --- !u!1 &6821277387890954525
 GameObject:
   m_ObjectHideFlags: 0

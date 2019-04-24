@@ -23,7 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        //FirePoint = transform.Find("FirePoint").transform;
+       
         playerInfo = PlayerInfo.instance;
         attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         playerDamage = playerInfo.playerDamage;

@@ -134,7 +134,7 @@ public class EnemyController : MonoBehaviour
     private void calcuateNewMovementVector()
     {
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
-        movementDirection = new Vector2(Random.Range(-2f, 2f), 0);
+        movementDirection = new Vector2(Random.Range(-1f, 1f), 0);
         //new movement iwth fixed speed
         movementPerSecond = movementDirection * enemySpeed;
    

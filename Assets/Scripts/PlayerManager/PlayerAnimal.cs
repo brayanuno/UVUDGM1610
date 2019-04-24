@@ -144,8 +144,9 @@ public class PlayerAnimal : MonoBehaviour
     //calling when player falls below 0 hp
     public void Die()
     {
-            animator.Play("Die");
-            Destroy(this,2f);
+        animator.Play("Die");
+        GameObject.Find("GamePlayManager").GetComponent<GameState>().Lose();
+        
     }
 
     public void Jump()

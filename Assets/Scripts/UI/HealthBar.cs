@@ -78,20 +78,5 @@ public class HealthBar : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         HealthDisplayCanvas.SetActive(false);
      }
-
-     //public void increaseMaxHitpoint(int hitPoint,bool active)
-     //{
-        //if(active)
-        ///{
-        
-        ////    maxHitpoint += hitPoint;
-        /////}
-        //else
-        ///{
-            
-        ////    maxHitpoint -= hitPoint;   
-       //// }
-    
-     ///}
 }
     
