@@ -8,6 +8,7 @@ public class PowerUps : MonoBehaviour
     //Powers fill up
     public Transform[] LoadingBar;
     public GameObject[] imagesOnReady;
+    [SerializeField]private GameObject[] powersParticles;
     //public Transform TextLoading;
 
     //saving the information of the current time of each power
@@ -28,7 +29,7 @@ public class PowerUps : MonoBehaviour
     private float thirdSillDuration = 6f;
 
     //speed of the power
-    private int[] speedPowers = { 10,5,15};
+    private int[] speedPowers = { 15,20,15}; //speed to reload a new power
     private bool[] powerAvailable = new bool[3];
 
     private void Start()
@@ -36,7 +37,6 @@ public class PowerUps : MonoBehaviour
         currentFirstPower = 0;
         currentSecondPower = 0;
         currentThirdPower = 0;
-
         delayFirstPower = 0;
         
         for(int i = 0;i < powerAvailable.Length; i++)
@@ -101,6 +101,7 @@ public class PowerUps : MonoBehaviour
             PlayerManager.instance.player.GetComponent<PlayerAnimal>().playerSpeed += 5f;
             PanelControls.instance.ActivatePanel(PanelControls.instance.AlertSkills[0], "+5 Speed"); //activating the panel in the scene
             firstPowerActivated = true;
+            PlayerManager.instance.player.GetComponent<PlayerBehaviour>().PowerEffect(powersParticles[0]);
             StartCoroutine(PowerTimer(0, PlayerSpeed, 4));
         } 
         
@@ -109,6 +110,7 @@ public class PowerUps : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>().hitpoint += 30;  //adding health to our Player
             PanelControls.instance.SpecialPanel(PanelControls.instance.AlertSkills[1], "+30 HitPoint",2); //activating the panel for 1 seconds in the scene
+            PlayerManager.instance.player.GetComponent<PlayerBehaviour>().PowerEffect(powersParticles[1]);
             powerAvailable[1] = false;
             currentSecondPower = 0; //reseting
         }
@@ -119,6 +121,7 @@ public class PowerUps : MonoBehaviour
             PlayerManager.instance.player.GetComponent<PlayerBehaviour>().playerDamage += 5;
             PanelControls.instance.ActivatePanel(PanelControls.instance.AlertSkills[2], "+5 Damage"); //activating the panel in the scene
             thirdPowerActivated = true;
+            PlayerManager.instance.player.GetComponent<PlayerBehaviour>().PowerEffect(powersParticles[2]);
             StartCoroutine(PowerTimer(1, PlayerDamage, 6));
         }
     }

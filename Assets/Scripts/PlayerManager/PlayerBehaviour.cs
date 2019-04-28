@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     public bool isEnemyClose;  //the enemy is close?
     
     //playerShooting
-    public Transform FirePoint;
+    public Transform firePoint;
     public bool rangeDelay;
 
     void Start()
@@ -27,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
         playerInfo = PlayerInfo.instance;
         attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         playerDamage = playerInfo.playerDamage;
-        rangeDelay = true;
+        rangeDelay = true;   
     }
 
     private void FixedUpdate()
@@ -128,7 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (receivingDamage)
         {
-            GameObject someCoolPrefab = Instantiate(Resources.Load("Prefabs/BloodSplash") as GameObject, FirePoint);
+            GameObject someCoolPrefab = Instantiate(Resources.Load("Prefabs/BloodSplash") as GameObject, firePoint);
             animator.SetTrigger("Hit");
             Destroy(someCoolPrefab,1f);
             receivingDamage = false;
@@ -139,14 +139,21 @@ public class PlayerBehaviour : MonoBehaviour
     {
         return GetClosestEnemy().gameObject;
     }
+
     //Shooting
     public IEnumerator Shooting()
     {
-        GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, FirePoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, firePoint.position, Quaternion.identity);
         rangeDelay = false;
         yield return new WaitForSeconds(2.5f);
         rangeDelay = true;
-    } 
+    }
+
+    public void PowerEffect(GameObject particle)
+    {
+        GameObject projectile = Instantiate(particle,firePoint.position, Quaternion.identity);
+        Destroy(projectile, 2);
+    }
     
 }
 
