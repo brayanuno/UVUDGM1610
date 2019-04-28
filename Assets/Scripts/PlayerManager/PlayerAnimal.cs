@@ -16,6 +16,10 @@ public class PlayerAnimal : MonoBehaviour
     public float jumpHeight;
 
     public bool jump;
+    public bool grounded;
+    public int maxjumps = 2;
+    public int jumpAmount = 0;
+
     public bool move;
     bool B_FacingRight = true;
     private Rigidbody2D rb;
@@ -52,8 +56,6 @@ public class PlayerAnimal : MonoBehaviour
             jumpHeight = playerInfo.jumpHeight;
             playerSpeed = playerInfo.speedPlayer;
          }
-        
-
     }
 
     void Update()
@@ -61,12 +63,15 @@ public class PlayerAnimal : MonoBehaviour
         //JUMPING
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
-            if(jump == true)
-            {
+            
                 Jump();
-              
-                jump = false;   
-            }     
+
+            //if (jump == true)
+            //{
+            //Jump();
+            //jump = false;   
+            //}  
+           
         }
         //MOVING LEFT
         if (Input.GetKey(KeyCode.A) && canMove)
@@ -151,7 +156,16 @@ public class PlayerAnimal : MonoBehaviour
 
     public void Jump()
     {
-        rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+        if (jumpAmount > 0)
+        {
+            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
+            grounded = false;
+            jumpAmount = jumpAmount - 1;
+        }
+        if (jumpAmount == 0)
+        {
+            return;
+        }
     }
 
     public void MovingRight()

@@ -19,6 +19,8 @@ TagManager:
   - Store
   - SelectedImage
   - InvisibleWall
+  - GamePlayManager
+  - Attack2Delay
   layers:
   - Default
   - TransparentFX

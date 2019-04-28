@@ -978,6 +978,9 @@ MonoBehaviour:
   playerSpeed: 0
   jumpHeight: 0
   jump: 0
+  grounded: 0
+  maxjumps: 2
+  jumpAmount: 0
   move: 0
 --- !u!114 &1698703129374948119
 MonoBehaviour:
@@ -996,7 +999,7 @@ MonoBehaviour:
   playerDamage: 0
   receivingDamage: 0
   isEnemyClose: 0
-  FirePoint: {fileID: 1335146012}
+  firePoint: {fileID: 1335146012}
   rangeDelay: 0
 --- !u!1 &1158206967480182
 GameObject:
@@ -4343,6 +4346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8511315792040471200}
   - component: {fileID: 8432102984890882987}
+  - component: {fileID: 5010430763950004904}
   m_Layer: 0
   m_Name: LegCollider
   m_TagString: Untagged
@@ -4390,6 +4394,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9267483, y: 0.4784708}
   m_EdgeRadius: 0
+--- !u!114 &5010430763950004904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367874633855609319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b033312ca59224ab7d22e24dd77bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3377702774754448368
 GameObject:
   m_ObjectHideFlags: 0

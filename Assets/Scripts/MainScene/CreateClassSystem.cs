@@ -32,7 +32,6 @@ public class CreateClassSystem : MonoBehaviour
     void Awake()
     {
         //this is the Chracter maanager cannot be destroy to send data to another scenes
-        DontDestroyOnLoad(this);
     }
 
     // Start is called before the first frame update
@@ -48,9 +47,9 @@ public class CreateClassSystem : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        CharacterSelection();
         DontDestroyOnLoad(this);
         username = usernameInput.text;
-        CharacterSelection();
         checkingEmptyUsername();
     }
 
@@ -185,6 +184,11 @@ public class CreateClassSystem : MonoBehaviour
     public void OnPointerExit(int index)
     {
         HoverImages[index ].SetActive(false);
+
+    }
+
+    public void StartLevel()
+    {
 
     }
 }

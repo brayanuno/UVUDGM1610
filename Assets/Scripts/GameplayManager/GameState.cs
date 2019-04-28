@@ -43,17 +43,19 @@ public class GameState : MonoBehaviour
     public void Lose()
     {
         Losing.SetActive(true);
+       
         StartCoroutine(WaitTime(2));
     }
 
     private void EnemiesCount()
     {
-        Enemiestext.text = "Enemies Left:" + EnemiesLeft().ToString();
+        Enemiestext.text = "Enemies Left: " + EnemiesLeft().ToString();
     }
      
     IEnumerator WaitTime(int time)
     {  
         yield return new WaitForSeconds(time);
+        Destroy(GameObject.Find("CharacterManager")); //deleting and reseting all player stats
         SceneManager.LoadScene(0);
     }
 

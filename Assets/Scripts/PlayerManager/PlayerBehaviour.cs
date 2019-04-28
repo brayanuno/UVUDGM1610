@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -16,18 +17,22 @@ public class PlayerBehaviour : MonoBehaviour
     public int playerDamage;
     public bool receivingDamage; //the enemy is beign hiite run animation
     public bool isEnemyClose;  //the enemy is close?
-    
+
+    private float attack2Delay = 2.5f;
+
     //playerShooting
     public Transform firePoint;
     public bool rangeDelay;
 
+
     void Start()
     {
-       
+     
         playerInfo = PlayerInfo.instance;
         attackDelay = 0.367f; //the exact frame of the animation attack; //future will change
         playerDamage = playerInfo.playerDamage;
-        rangeDelay = true;   
+        rangeDelay = true;
+
     }
 
     private void FixedUpdate()
@@ -147,6 +152,7 @@ public class PlayerBehaviour : MonoBehaviour
         rangeDelay = false;
         yield return new WaitForSeconds(2.5f);
         rangeDelay = true;
+                
     }
 
     public void PowerEffect(GameObject particle)
