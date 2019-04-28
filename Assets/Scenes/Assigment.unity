@@ -5915,6 +5915,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &411742362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411742363}
+  - component: {fileID: 411742365}
+  - component: {fileID: 411742364}
+  m_Layer: 5
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &411742363
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411742362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2111611143}
+  m_Father: {fileID: 1455461744}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 364, y: 416.3}
+  m_SizeDelta: {x: -1335.6, y: -832.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &411742364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411742362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &411742365
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411742362}
+  m_CullTransparentMesh: 0
 --- !u!1 &411815214
 GameObject:
   m_ObjectHideFlags: 0
@@ -9967,6 +10042,7 @@ GameObject:
   - component: {fileID: 739894854}
   - component: {fileID: 739894855}
   - component: {fileID: 739894849}
+  - component: {fileID: 739894856}
   m_Layer: 0
   m_Name: GamePlayManager
   m_TagString: Untagged
@@ -10109,6 +10185,19 @@ MonoBehaviour:
   jumpHeight: 0
   restartStats: 0
   displayingInfo: {fileID: 0}
+--- !u!114 &739894856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739894847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ca7a60606d9334e99e40db9363c127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tip: {fileID: 2111611144}
 --- !u!1 &740796514
 GameObject:
   m_ObjectHideFlags: 0
@@ -15194,6 +15283,7 @@ MonoBehaviour:
     type: 3}
   damage: 20
   enemySpeed: 3.6
+  attackDelay: 2
   stopRange: 1.2
   enemyhealthbar: {fileID: 1205409850}
   enemyHitPoint: 100
@@ -15900,6 +15990,7 @@ MonoBehaviour:
     type: 3}
   damage: 20
   enemySpeed: 3.2
+  attackDelay: 2
   stopRange: 1.8
   enemyhealthbar: {fileID: 1554407806}
   enemyHitPoint: 100
@@ -20830,6 +20921,7 @@ RectTransform:
   - {fileID: 437561610}
   - {fileID: 1362819582}
   - {fileID: 1388672509}
+  - {fileID: 411742363}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21708,6 +21800,7 @@ MonoBehaviour:
     type: 3}
   damage: 20
   enemySpeed: 3.8
+  attackDelay: 2
   stopRange: 1.1
   enemyhealthbar: {fileID: 1190482593}
   enemyHitPoint: 100
@@ -26067,6 +26160,7 @@ MonoBehaviour:
     type: 3}
   damage: 20
   enemySpeed: 3.6
+  attackDelay: 2
   stopRange: 1.2
   enemyhealthbar: {fileID: 114048840}
   enemyHitPoint: 100
@@ -31351,6 +31445,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2111611142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111611143}
+  - component: {fileID: 2111611145}
+  - component: {fileID: 2111611144}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2111611143
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111611142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 411742363}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.58, y: -0.5}
+  m_SizeDelta: {x: 233.45, y: 46.03}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2111611144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111611142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9b44ddcd3a4870c4792f5fa2072acd51, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'TIP: bUY ITEMS IN THE STORE AND EQUIP IN THE INVENTORY'
+--- !u!222 &2111611145
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111611142}
+  m_CullTransparentMesh: 0
 --- !u!1 &2118053196
 GameObject:
   m_ObjectHideFlags: 0
@@ -32207,6 +32380,7 @@ MonoBehaviour:
     type: 3}
   damage: 20
   enemySpeed: 4
+  attackDelay: 2
   stopRange: 1
   enemyhealthbar: {fileID: 1667723986}
   enemyHitPoint: 100

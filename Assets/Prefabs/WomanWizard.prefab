@@ -3144,7 +3144,7 @@ MonoBehaviour:
   playerDamage: 0
   receivingDamage: 0
   isEnemyClose: 0
-  FirePoint: {fileID: 0}
+  FirePoint: {fileID: 1294875767}
   rangeDelay: 0
 --- !u!1 &6821277387890954525
 GameObject:

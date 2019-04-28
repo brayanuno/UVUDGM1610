@@ -48,7 +48,7 @@ public class GameState : MonoBehaviour
 
     private void EnemiesCount()
     {
-        Enemiestext.text = EnemiesLeft().ToString();
+        Enemiestext.text = "Enemies Left:" + EnemiesLeft().ToString();
     }
      
     IEnumerator WaitTime(int time)
