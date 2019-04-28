@@ -6059,7 +6059,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WIN
+  m_Text: YOU WON
 --- !u!222 &351584557
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24778,8 +24778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.6, y: 56.1}
-  m_SizeDelta: {x: 555.7, y: 453.8}
+  m_AnchoredPosition: {x: -0.0000038147, y: 53}
+  m_SizeDelta: {x: 626.6, y: 469.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510729443
 MonoBehaviour:
@@ -24814,7 +24814,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOSE
+  m_Text: YOU LOST
 --- !u!222 &1510729444
 CanvasRenderer:
   m_ObjectHideFlags: 0

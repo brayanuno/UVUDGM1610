@@ -187,8 +187,4 @@ public class CreateClassSystem : MonoBehaviour
 
     }
 
-    public void StartLevel()
-    {
-
-    }
 }
