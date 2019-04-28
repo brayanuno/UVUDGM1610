@@ -17376,7 +17376,7 @@ GameObject:
   - component: {fileID: 1087363986}
   - component: {fileID: 1087363985}
   m_Layer: 9
-  m_Name: Enemy (3)
+  m_Name: Hulk
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18311,7 +18311,7 @@ GameObject:
   - component: {fileID: 1155605123}
   - component: {fileID: 1155605122}
   m_Layer: 9
-  m_Name: Enemy (4)
+  m_Name: Flash
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24674,7 +24674,7 @@ GameObject:
   - component: {fileID: 1505569196}
   - component: {fileID: 1505569195}
   m_Layer: 9
-  m_Name: Enemy (1)
+  m_Name: Awesome
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29609,7 +29609,7 @@ GameObject:
   - component: {fileID: 1755938149}
   - component: {fileID: 1755938148}
   m_Layer: 9
-  m_Name: Enemy (2)
+  m_Name: Destructor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,7 +29,7 @@ public class PowerUps : MonoBehaviour
     private float thirdSillDuration = 6f;
 
     //speed of the power
-    private int[] speedPowers = { 15,20,15}; //speed to reload a new power
+    private int[] speedPowers = { 14,12,11}; //speed to reload a new power
     private bool[] powerAvailable = new bool[3];
 
     private void Start()

@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 10194
+  controlID: 2496
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 448}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 10089
+  controlID: 2497
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   - {fileID: 6}
   - {fileID: 7}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -190,9 +190,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -9.381803, y: -36.345467, z: -0.15625}
+    m_Target: {x: -6.6821895, y: 0.6555365, z: -0.1875}
     speed: 2
-    m_Value: {x: -9.381803, y: -36.345467, z: -0.15625}
+    m_Value: {x: -6.6821895, y: 0.6555365, z: -0.1875}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -224,9 +224,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 134.95592
+    m_Target: 51.391853
     speed: 2
-    m_Value: 134.95592
+    m_Value: 51.391853
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -438,10 +438,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 1c2924cb06195b048b6500969a9e58eb,
+  m_AnimatorController: {fileID: 9100000, guid: 9939336134418ed4180ae5b95d0d48bf,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107790055978745116, guid: 1c2924cb06195b048b6500969a9e58eb,
+  - m_Target: {fileID: 1107790055978745116, guid: 9939336134418ed4180ae5b95d0d48bf,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 498}
   m_MaxSize: {x: 10004, y: 14048}
   vertical: 1
-  controlID: 10195
+  controlID: 2447
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -551,8 +551,8 @@ MonoBehaviour:
     y: 0
     width: 478
     height: 494
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 224}
+  m_MaxSize: {x: 4004, y: 4024}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -589,7 +589,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 22acffff2eacffff3ab4ffffecbbffff18bcffff44bcffff8cbcffff94bcffffdabcffffe8bcffff06bdffff0ebdffff20bdffffe6beffff86bfffffa8bfffffb6bffffff2bfffff1ec0ffff48c0ffff5ac0ffff7ec0ffff8ac0ffffa8c0ffff6cc1ffffb4c1fffffcc1ffff58c2ffff84c2ffffa0c2ffffb8c2ffff2ac4ffff36c4ffff4ec4ffff5ac4ffff66c4ffff08c5ffff0ec5ffff18c5ffff1cc5ffff82c8ffff86c8ffff78cdffffa8cdffff0cceffff28ceffff74ceffff82ceffff92cefffff8ceffff20cfffff72cfffffaccfffffeecfffff08d0ffff5ed0ffffa8deffffe6e0ffff34e3ffff48e7ffff4af6ffff60f6fffff4f7ffffd4fbffffcc5b00000c5c0000885c000088910000fe9200008e9400009c9400002e020100b22b0100c22b0100622d0100f0700100a4710100e4730100
+      m_ExpandedIDs: 2ed5ffffa2d5fffff0d5ffff0cd6ffff8ed7ffff9ed7ffff26e0ffffd4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -640,7 +640,7 @@ MonoBehaviour:
   - {fileID: 14}
   - {fileID: 15}
   m_Selected: 1
-  m_LastSelected: 0
+  m_LastSelected: 2
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -679,19 +679,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/MainScene
+    - Assets/Scripts/GameplayManager
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/Scripts/MainScene
+  - Assets/Scripts/GameplayManager
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\UVUDGM1610
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: cc150000
-    m_LastClickedID: 5580
+    scrollPos: {x: 0, y: 224}
+    m_SelectedIDs: bc140000
+    m_LastClickedID: 5308
     m_ExpandedIDs: 00000000060a0000be0b0000060e000096120000e212000082130000b21600001c1700002217000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -745,9 +745,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6a720100
-    m_LastClickedInstanceID: 94826
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: a8360000003200000c320000f82b0000dec5000068c40000e2130000ba88000052b1000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -813,19 +813,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/MainScene
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/MainScene
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\UVUDGM1610
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 256}
-    m_SelectedIDs: cc150000
-    m_LastClickedID: 5580
+    scrollPos: {x: 0, y: 176}
+    m_SelectedIDs: ee0d0000
+    m_LastClickedID: 3566
     m_ExpandedIDs: 00000000060a0000be0b0000060e000096120000e212000082130000b21600001c1700002217000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -879,9 +879,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: bc720100
-    m_LastClickedInstanceID: 94908
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 460c0000
+    m_LastClickedInstanceID: 3142
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 822b0000e2130000641400003e0e000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -947,19 +947,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Mercenary_Pack/SLIM-WOMAN_3_Wizard/Animation
+    - Assets/Mercenary_Pack/OLD-MAN_3_drunken-samurai/Animation
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Mercenary_Pack/SLIM-WOMAN_3_Wizard/Animation
+  - Assets/Mercenary_Pack/OLD-MAN_3_drunken-samurai/Animation
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\UVUDGM1610
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 80}
-    m_SelectedIDs: cc0a0000
-    m_LastClickedID: 2764
+    scrollPos: {x: 0, y: 144}
+    m_SelectedIDs: 860a0000
+    m_LastClickedID: 2694
     m_ExpandedIDs: 00000000060a0000be0b0000060e000096120000e212000082130000b21600001c1700002217000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
