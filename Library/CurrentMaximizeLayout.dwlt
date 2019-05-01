@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 2496
+  controlID: 7672
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -74,7 +74,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 448}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 2497
+  controlID: 7673
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -190,9 +190,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.6821895, y: 0.6555365, z: -0.1875}
+    m_Target: {x: -0.0139367785, y: 5.026149, z: 90}
     speed: 2
-    m_Value: {x: -6.6821895, y: 0.6555365, z: -0.1875}
+    m_Value: {x: -0.0139367785, y: 5.026149, z: 90}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -222,11 +222,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: -1}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 51.391853
+    m_Target: 6.8178496
     speed: 2
-    m_Value: 51.391853
+    m_Value: 6.8178496
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 498}
   m_MaxSize: {x: 10004, y: 14048}
   vertical: 1
-  controlID: 2447
+  controlID: 7694
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -551,8 +551,8 @@ MonoBehaviour:
     y: 0
     width: 478
     height: 494
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -587,9 +587,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 2ed5ffffa2d5fffff0d5ffff0cd6ffff8ed7ffff9ed7ffff26e0ffffd4fbffff
+      m_SelectedIDs: 2eeb0100
+      m_LastClickedID: 125742
+      m_ExpandedIDs: 2cd1ffffa4d1ffff12d4ffffc6daffff1addffffbee1fffff4eaffff72ecffffe6eeffffa6efffff6cf4ffff76f6ffffeef8ffff60fbffffd4fbffff723e0000f63f00003a42000072430000f84300005274000096760000ce77000054780000d2790000228e0000fcb5000040b8000078b900006ee80000a6e900003a7f01007e810100b68201003c830100ca9601005c9701000a990100a4c40100e8c6010020c80100a6c8010004e7010048e9010080ea0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -879,9 +879,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 460c0000
-    m_LastClickedInstanceID: 3142
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 2eeb0100
+    m_LastClickedInstanceID: 125742
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 822b0000e2130000641400003e0e000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -947,19 +947,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Mercenary_Pack/OLD-MAN_3_drunken-samurai/Animation
+    - Assets/Scripts/Inventory
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Mercenary_Pack/OLD-MAN_3_drunken-samurai/Animation
+  - Assets/Scripts/Inventory
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\brayanuno\Documents\git\UVUDGM1610\2D Game\UVUDGM1610
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 144}
-    m_SelectedIDs: 860a0000
-    m_LastClickedID: 2694
+    scrollPos: {x: 0, y: 240}
+    m_SelectedIDs: 3c180000
+    m_LastClickedID: 6204
     m_ExpandedIDs: 00000000060a0000be0b0000060e000096120000e212000082130000b21600001c1700002217000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1013,9 +1013,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: f83c0000
+    m_LastClickedInstanceID: 15608
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0

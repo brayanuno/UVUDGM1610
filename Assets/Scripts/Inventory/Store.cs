@@ -55,9 +55,9 @@ public class Store : MonoBehaviour
 
     IEnumerator WaitSeconds(float waitTime,GameObject obj)
     {
-        NoCoinsPanel.SetActive(true);
+        obj.SetActive(true);
         yield return new WaitForSeconds(waitTime);
-        NoCoinsPanel.SetActive(false);
+        obj.SetActive(false);
     }
 
     private bool PriceItem(int index)

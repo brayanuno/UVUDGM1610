@@ -43,11 +43,7 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
     }
     void Update()
     {
-        if (username.text == "")
-        {
-            usernameButton.interactable = false;
-        } else { usernameButton.interactable = true; }
-
+        //PlayerInfo.instance.username = username.text;
     }
 
     //check if new objects are being in the correct place to increase the player stats or not
@@ -174,6 +170,7 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
                 if (clickCount == 2 && item.GetComponent<PrefabData>().id == 3)
                 {
                     changeUsername.SetActive(true);
+                    //GameObject.FindGameObjectWithTag("Inventory").SetActive(false);
                 }
                 if (clickCount == 2 && item.GetComponent<PrefabData>().id == 4)
                 {
@@ -208,11 +205,12 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
         Destroy(FindObjectByID(3));
         PlayerInfo.instance.username = username.text;
         changeUsername.SetActive(false);
-        print(FindObjectByID(3));
+        
     }
 
     private void KillOne()
     {
+        Destroy(FindObjectByID(4));
         Destroy(PlayerManager.instance.player.GetComponent<PlayerBehaviour>().ClosestEnemyObject());
     }
     
@@ -235,10 +233,6 @@ public class Inventory : MonoBehaviour , IHasChanged, IPointerClickHandler
             isOpen = true;
         }
 
-        //if (Store.instance.GetComponent<Store>().gameObject.activeInHierarchy)
-        //{
-           // Store.instance.GetComponent<Store>().Exit();
-        //}
 
     }
 }

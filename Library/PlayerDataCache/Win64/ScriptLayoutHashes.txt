@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/Builds/2D Game.exe
+C:/Users/brayanuno/Documents/git/UVUDGM1610/2D Game/UVUDGM1610/BrayanFernandezBuilds/2D Game.exe
 SceneListBegin?
 Assets/Scenes/MainScene.unity
 Assets/Scenes/Assigment.unity
@@ -128,7 +128,6 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 63257910dec85c07843c2e5996588b2d Assembly-CSharp.dll:.Stats
-0597108a372e82bf26854d10898f8f7d Assembly-CSharp.dll:.Mercenary_GM
 e1f201a2d74aabf16cab74f61fee06e6 Assembly-CSharp.dll:.EnemyController
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
